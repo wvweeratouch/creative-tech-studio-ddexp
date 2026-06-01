@@ -26,7 +26,7 @@ Instructor: **Wave Pongruengkiat** (Creative Tech Studio).
 ## ไฟล์ใหญ่ (วิดีโอ / `.toe` ที่มี media)
 
 ไฟล์หนักๆ ที่ไม่เหมาะกับ GitHub อยู่ใน Google Drive ของคอร์ส:
-**→ [Course Drive folder](DRIVE_LINK_HERE)**
+**→ [Course Drive folder](https://drive.google.com/drive/folders/1vAGsqwbu9fuCK5-QisMlVxwJWfupOU5v)**
 
 ## ต้องลงอะไรก่อนเรียน
 

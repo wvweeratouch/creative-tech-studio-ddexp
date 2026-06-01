@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DDEXP × TouchDesigner — ไฟล์คอร์ส</title>
+<style>
+  :root { --bg:#0d1117; --fg:#e6edf3; --accent:#58e1c0; --muted:#8b949e; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; }
+  body {
+    font-family:"Segoe UI", system-ui, -apple-system, "Sarabun", sans-serif;
+    background:radial-gradient(1200px 800px at 50% -10%, #16323a 0%, var(--bg) 60%);
+    color:var(--fg); min-height:100%;
+    display:flex; align-items:center; justify-content:center; padding:6vh 4vw;
+  }
+  .card { text-align:center; max-width:900px; }
+  .kicker { color:var(--accent); letter-spacing:.18em; font-size:clamp(12px,1.6vw,16px); text-transform:uppercase; margin-bottom:.6rem; }
+  h1 { font-size:clamp(28px,4.5vw,52px); line-height:1.1; margin-bottom:.4rem; }
+  .dates { color:var(--muted); font-size:clamp(14px,2vw,20px); margin-bottom:2.2rem; }
+  .qr { background:#fff; padding:18px; border-radius:20px; display:inline-block; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  .qr img { width:min(46vw,320px); height:auto; display:block; }
+  .scan { color:var(--muted); margin-top:1rem; font-size:clamp(13px,1.8vw,17px); }
+  .link {
+    margin-top:1.6rem; font-size:clamp(22px,3.6vw,40px); font-weight:700;
+    background:#161b22; border:1px solid #30363d; border-radius:14px;
+    padding:.5em 1em; display:inline-block; color:#fff;
+  }
+  .link b { color:var(--accent); }
+  .note { margin-top:1.8rem; color:var(--muted); font-size:clamp(12px,1.6vw,15px); line-height:1.7; }
+  .note code { background:#161b22; padding:.1em .5em; border-radius:6px; color:#fff; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="kicker">Creative Tech Studio × ดีดีเอ็กซ์พี</div>
+    <h1>TouchDesigner Workshop</h1>
+    <div class="dates">ไฟล์คอร์สทั้งหมด · handout · ตาราง · tutorial .toe</div>
+
+    <div class="qr">
+      <img src="images/qr-ddexp-workshop.png" alt="QR — สแกนเพื่อเปิดไฟล์คอร์ส">
+    </div>
+    <div class="scan">📱 สแกน QR ด้วยกล้องมือถือ</div>
+
+    <div class="link">tinyurl.com/<b>ddexp-workshop</b></div>
+
+    <div class="note">
+      เปิดแล้วกด <code>Code → Download ZIP</code> โหลดทั้งหมด · ไม่ต้อง login<br>
+      ไฟล์ใหญ่ (วิดีโอ / .toe ที่มี media) อยู่ใน Google Drive — ลิงก์อยู่ในหน้า repo
+    </div>
+  </div>
+</body>
+</html>
