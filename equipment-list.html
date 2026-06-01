@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Equipment List — ดีดีเอ็กซ์พี Workshop · 2-3-5 มิ.ย. 2026</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fafaf7;
+    --accent: #d4612a;
+    --accent-soft: #f5e8dd;
+    --muted: #6b6b6b;
+    --line: #e0ddd5;
+    --tag-venue: #2d6a4f;
+    --tag-venue-soft: #d8f0e5;
+    --tag-personal: #1d4e89;
+    --tag-personal-soft: #dde9f5;
+    --tag-device: #b8336a;
+    --tag-device-soft: #f5d9e6;
+    --tag-consum: #c97b3e;
+    --tag-consum-soft: #f7e4d2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: -apple-system, BlinkMacSystemFont, "Sarabun", "Segoe UI", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 56px;
+  }
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 20px;
+    margin-bottom: 36px;
+  }
+  .label {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .section {
+    margin-bottom: 36px;
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .tag.venue { background: var(--tag-venue-soft); color: var(--tag-venue); }
+  .tag.personal { background: var(--tag-personal-soft); color: var(--tag-personal); }
+  .tag.device { background: var(--tag-device-soft); color: var(--tag-device); }
+  .tag.consum { background: var(--tag-consum-soft); color: var(--tag-consum); }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .owner {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .items {
+    list-style: none;
+    padding: 0;
+  }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .item:last-child { border-bottom: none; }
+  .check {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--ink);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .item-body {
+    flex: 1;
+  }
+  .item-name {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  .item-note {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+  }
+  @media print {
+    body { font-size: 14px; }
+    .container { padding: 24px; }
+    .section { margin-bottom: 20px; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="label">EQUIPMENT LIST</div>
+  <h1>Workshop @ ดีดีเอ็กซ์พี</h1>
+  <p class="meta">3-Day TouchDesigner Workshop · 2-3-5 มิถุนายน 2026 · ทีม 8 คน</p>
+</header>
+
+<!-- SPACE -->
+<section class="section">
+  <div class="section-head">
+    <span class="tag venue">SPACE</span>
+    <h2>ห้องเรียน</h2>
+    <span class="owner">— จัดเตรียมโดยบริษัท</span>
+  </div>
+  <ul class="items">
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Projector ห้องเรียน</div>
+        <div class="item-note">พร้อม HDMI input สำหรับ demo + presentation</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">ปลั๊กพ่วง</div>
+        <div class="item-note">เพียงพอสำหรับ laptop 8 เครื่อง + กล้อง + printer/scanner</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- PERSONAL -->
+<section class="section">
+  <div class="section-head">
+    <span class="tag personal">PERSONAL</span>
+    <h2>ของผู้เข้าร่วม</h2>
+    <span class="owner">— แต่ละคนเตรียม</span>
+  </div>
+  <ul class="items">
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Computer / Laptop</div>
+        <div class="item-note">ติดตั้ง TouchDesigner + dependencies ก่อนวันแรก (มี install guide)</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Adapter</div>
+        <div class="item-note">สายชาร์จ + USB adapter ถ้า laptop เป็น USB-C only</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- WORKSHOP DEVICE -->
+<section class="section">
+  <div class="section-head">
+    <span class="tag device">WORKSHOP DEVICE</span>
+    <h2>อุปกรณ์ workshop (Wave นำมา)</h2>
+  </div>
+  <ul class="items">
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Webcam</div>
+        <div class="item-note">อย่างน้อย 2 ตัว สำหรับ installation — ถ้าเยอะกว่านี้ หลายคน prototype พร้อมกันได้</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">สาย extender for webcam</div>
+        <div class="item-note">USB extension cable — สำหรับวางกล้องห่างจาก laptop</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Printer</div>
+        <div class="item-note">สำหรับพิมพ์ ArUco template + วัสดุประกอบ</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Scanner</div>
+        <div class="item-note">Flatbed scanner — สำหรับ archive ภาพคุณภาพสูง</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- WORKSHOP EQUIPMENT -->
+<section class="section">
+  <div class="section-head">
+    <span class="tag consum">WORKSHOP EQUIPMENT</span>
+    <h2>วัสดุ + เครื่องเขียน (Wave นำมา)</h2>
+  </div>
+  <ul class="items">
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Cardboard</div>
+        <div class="item-note">สำหรับ build scan station Day 1 เช้า</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">กรรไกร / คัทเตอร์</div>
+        <div class="item-note">สำหรับตัด cardboard</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Post-it</div>
+        <div class="item-note">ideation + sticky notes ระหว่าง session</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">สีเทียน</div>
+        <div class="item-note">สำหรับวาดบนกระดาษ (scan input)</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">Marker หลากสี</div>
+        <div class="item-note">สำหรับวาด + brainstorm + sketching</div>
+      </div>
+    </li>
+    <li class="item">
+      <div class="check"></div>
+      <div class="item-body">
+        <div class="item-name">กระดาษ</div>
+        <div class="item-note">A4 หรือ A3 — สำหรับ template + วาด + ลองผิดลองถูก</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<footer>
+  <span>Creative Tech Studio × ดีดีเอ็กซ์พี Workshop</span>
+  <span>v1 · 2026-05-28</span>
+</footer>
+
+</div>
+</body>
+</html>

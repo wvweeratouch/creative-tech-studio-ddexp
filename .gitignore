@@ -1,0 +1,12 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+# TouchDesigner backups & temp
+*.toe.*
+Backup/
+*.toebak
+# Heavy media -> use Drive instead
+*.mov
+*.mp4
+*.exr
