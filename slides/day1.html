@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TouchDesigner Workshop — Day 1 Slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root{
+    --ink:#16202a; --muted:#5b6b7a; --line:#e2e8f0; --soft:#f1f5f9;
+    --accent:#0ea5a4; --accent2:#7c3aed; --warn:#f59e0b; --bg:#f7fafc;
+    --top:#6c5ce7; --chop:#43a047; --sop:#5b9bd5; --pop:#0d9488; --dat:#b06ab3; --mat:#cf8a3b; --comp:#6b7280;
+    --W:1280px; --H:720px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%; font-family:"IBM Plex Sans Thai",sans-serif;}
+  body{background:#0b1220; overflow:hidden; color:var(--ink);}
+  /* fit wrapper scales the fixed-size stage to the window */
+  #fit{position:fixed; inset:0; display:flex; align-items:center; justify-content:center;}
+  #stage{width:var(--W); height:var(--H); position:relative; transform-origin:center center;
+    background:var(--bg); overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .slide{position:absolute; inset:0; display:none; flex-direction:column; padding:60px 86px 84px;}
+  .slide.on{display:flex;}
+  code,.mono{font-family:"IBM Plex Mono",monospace; background:#eef2f6; padding:1px 7px; border-radius:5px; font-size:.9em;}
+  .kicker{display:inline-block; align-self:flex-start; font-size:15px; font-weight:700;
+    letter-spacing:.5px; text-transform:uppercase; color:#fff; background:var(--accent); padding:6px 16px; border-radius:999px;}
+  .kicker.k2{background:var(--accent2);}
+  h1{font-size:60px; line-height:1.1; margin:24px 0 12px; font-weight:700;}
+  h2{font-size:44px; line-height:1.15; margin:22px 0 20px; font-weight:700;}
+  .lead{font-size:27px; color:var(--muted); line-height:1.5; max-width:82%;}
+  ul{list-style:none; margin-top:14px;}
+  li{font-size:25px; line-height:1.5; margin:14px 0; padding-left:30px; position:relative;}
+  li::before{content:"▸"; color:var(--accent); position:absolute; left:0;}
+  li b{color:var(--accent2);}
+  .big{font-size:30px; line-height:1.5;}
+  .note{font-size:21px; color:var(--muted); margin-top:auto;}
+  .chain{display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:28px 0;}
+  .node{background:#fff; border:3px solid var(--accent); border-radius:12px; padding:14px 20px;
+    font-size:22px; font-weight:600; box-shadow:0 3px 10px rgba(0,0,0,.06);}
+  .node.alt{border-color:var(--accent2);}
+  .arrow{font-size:28px; color:var(--muted);}
+  .fams{display:grid; grid-template-columns:repeat(7,1fr); gap:11px; margin:26px 0;}
+  .fam{border-radius:12px; padding:20px 6px; color:#fff; text-align:center;}
+  .fam h3{font-size:25px; margin-bottom:7px; font-weight:700;}
+  .fam p{font-size:14.5px; opacity:.96; line-height:1.35;}
+  .fam.top{background:var(--top);} .fam.chop{background:var(--chop);}
+  .fam.sop{background:var(--sop);} .fam.pop{background:var(--pop);}
+  .fam.dat{background:var(--dat);} .fam.mat{background:var(--mat);} .fam.comp{background:var(--comp);}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:18px;}
+  .card2{background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px 26px;}
+  .card2 h3{font-size:26px; color:var(--accent2); margin-bottom:12px; font-weight:600;}
+  .card2 p,.card2 li{font-size:21px;} .card2 li{margin:8px 0;}
+  .title{background:linear-gradient(135deg,#0ea5a4,#7c3aed); color:#fff; justify-content:center;}
+  .title .kicker{background:rgba(255,255,255,.22); border:1px solid rgba(255,255,255,.5);}
+  .title h1{font-size:72px;} .title .lead{color:#eafffb; max-width:92%;}
+  .demo{background:#0b1220; color:#eef2f6; justify-content:center;}
+  .demo .kicker{background:var(--warn);} .demo h1{color:#fff;} .demo .lead{color:#cbd5e1;}
+  .hint{font-size:18px; color:#64748b; margin-top:18px;}
+  .demo .node{background:#162033; border-color:#fff; color:#fff;}
+  .demo .node.alt{background:#1e1b3a; border-color:#a78bfa;}
+  .demo .arrow{color:#94a3b8;}
+  .demo li{color:#e2e8f0;} .demo li b{color:#a78bfa;}
+  /* links / shortlink slide */
+  .linkrow{display:flex; gap:50px; align-items:center; margin-top:24px;}
+  .qrbox{text-align:center;}
+  #qr{background:#fff; padding:12px; border-radius:14px; display:inline-block; box-shadow:0 6px 20px rgba(0,0,0,.1);}
+  #qr img,#qr canvas{display:block;}
+  .qrcap{margin-top:12px; font-size:19px; color:var(--muted); font-weight:600;}
+  .linkcol{flex:1;}
+  .shortbig{font-size:42px; font-weight:700; color:var(--accent2); margin-bottom:20px; letter-spacing:.3px;}
+  .linkitem{font-size:20px; margin:14px 0; line-height:1.45;}
+  .linkitem .mono{font-size:15.5px; color:var(--muted); word-break:break-all;}
+  /* progress bar inside stage */
+  #bar{position:absolute; top:0; left:0; height:5px; background:var(--accent); z-index:5; transition:width .2s;}
+  #foot{position:absolute; bottom:0; left:0; right:0; display:flex; justify-content:space-between;
+    padding:14px 28px; font-size:15px; color:var(--muted);}
+  .demo #foot{color:#64748b;}
+  /* controls (outside stage, not captured) */
+  #ctrl{position:fixed; top:14px; right:16px; z-index:50; display:flex; gap:8px;}
+  #ctrl button{font-family:inherit; font-size:13px; font-weight:600; border:none; cursor:pointer;
+    background:rgba(255,255,255,.14); color:#fff; padding:8px 13px; border-radius:8px; backdrop-filter:blur(4px);}
+  #ctrl button:hover{background:rgba(255,255,255,.28);}
+  #toast{position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:60;
+    background:#111827; color:#fff; padding:10px 18px; border-radius:10px; font-size:14px; display:none;}
+</style>
+</head>
+<body>
+
+<div id="ctrl">
+  <button onclick="savePNG()">💾 หน้านี้ PNG</button>
+  <button onclick="saveAll()">💾 ทั้งหมด</button>
+  <button onclick="toggleFS()">⛶ เต็มจอ</button>
+</div>
+<div id="toast"></div>
+
+<div id="fit"><div id="stage">
+  <div id="bar"></div>
+
+  <!-- 1 TITLE -->
+  <section class="slide title on">
+    <span class="kicker">Day 1 · Foundation</span>
+    <h1>TouchDesigner Workshop</h1>
+    <p class="lead">3 วันจาก fundamental → installation จริง · วันนี้ปูพื้น แล้วไต่ paint → audio → particle</p>
+    <div class="note" style="color:#eafffb;">→ ไปต่อ · ← ย้อน · F เต็มจอ · S เซฟหน้านี้</div>
+  </section>
+
+  <!-- LINKS / SHORTLINK -->
+  <section class="slide">
+    <span class="kicker">ไฟล์ + ลิงก์</span>
+    <h2>เข้าถึงไฟล์ทั้งหมดที่นี่</h2>
+    <div class="linkrow">
+      <div class="qrbox"><div id="qr"></div><div class="qrcap">สแกนเลย ↑</div></div>
+      <div class="linkcol">
+        <div class="shortbig">https://tinyurl.com/ddexp-workshop</div>
+        <p class="linkitem"><b>GitHub</b> — handout + ไฟล์ tutorial .toe<br><span class="mono">github.com/wvweeratouch/creative-tech-studio-ddexp</span></p>
+        <p class="linkitem"><b>Google Drive</b> — ไฟล์ใหญ่ + recording (ใครมีลิงก์ดูได้)<br><span class="mono">drive.google.com/drive/folders/1vAGsqwbu9fuCK5-QisMlVxwJWfupOU5v</span></p>
+      </div>
+    </div>
+    <div class="note">link เดียวจำง่าย — สแกน QR หรือพิมพ์ shortlink ก็ถึงทุกอย่าง</div>
+  </section>
+
+  <!-- 2 WHAT WE BUILD -->
+  <section class="slide">
+    <span class="kicker">เป้าหมาย 3 วัน</span>
+    <h2>เราจะสร้าง "Draw → Scan → Touch"</h2>
+    <div class="chain">
+      <div class="node">วาดบนกระดาษ</div><span class="arrow">→</span>
+      <div class="node">กล้อง scan ให้ตรง</div><span class="arrow">→</span>
+      <div class="node alt">รูปกลายเป็นฝูง particle</div><span class="arrow">→</span>
+      <div class="node alt">เอามือปัดเล่นได้</div>
+    </div>
+    <ul>
+      <li><b>วันนี้</b> ปูพื้น + ทำ sketch แรก (paint, audio, particle)</li>
+      <li><b>พรุ่งนี้</b> ต่อ input จริง — มือ, กล้อง, เก็บไฟล์, ต่อเว็บ</li>
+      <li><b>วันสุดท้าย</b> ประกอบเป็นงานเดียว แล้วตั้งโชว์จริง</li>
+    </ul>
+    <div class="note">ทุกอย่างที่เรียนวันนี้ serve ปลายทางนี้ — ไม่ใช่ทฤษฎีเพียงอย่างเดียว</div>
+  </section>
+
+  <!-- 3 WHAT IS TD -->
+  <section class="slide">
+    <span class="kicker">พื้นฐาน</span>
+    <h2>TouchDesigner คืออะไร</h2>
+    <p class="big">เครื่องมือ <b>real-time node-based dataflow</b> — เราวาง "สาย" ของการแปลงข้อมูลไว้ แล้วโปรแกรมก็คำนวณภาพ/เสียงให้สดทุกเฟรม</p>
+    <p class="big" style="margin-top:22px;">นึกภาพเหมือน <b>สายพานโรงงาน</b>: ข้อมูลดิบไหลเข้าทางซ้าย ผ่านเครื่องแปลงทีละตัว ออกมาเป็นภาพทางขวา — เราออกแบบว่าจะมีเครื่องอะไรบ้าง ต่อกันยังไง</p>
+    <div class="note">ไม่ได้เขียนโปรแกรมทีละบรรทัด — แต่ "วางสาย" แล้วโปรแกรมรันให้</div>
+  </section>
+
+  <!-- 4 LANGUAGES -->
+  <section class="slide">
+    <span class="kicker">พื้นฐาน</span>
+    <h2>TD ใช้ภาษา / เทคโนโลยีอะไร</h2>
+    <ul>
+      <li><b>ตัว engine</b> เขียนด้วย C++ รันบน GPU — งานหนัก (ภาพ, signal, 3D, render) อยู่ชั้นนี้ เร็วมาก</li>
+      <li><b>Python</b> ฝังมาในตัว — ไว้เขียน logic, ควบคุม, เชื่อมระบบ. ทำงานส่วนใหญ่ได้โดยไม่ต้องเขียน Python แค่ต่อ node</li>
+      <li><b>GLSL</b> — เขียน shader บน GPU เองได้ ถ้าอยากลงลึก</li>
+      <li>ต่อ <b>custom operator ด้วย C++</b> ได้ ถ้าต้องการของที่ไม่มีในตัว</li>
+    </ul>
+    <div class="note">เริ่มต้นแค่ต่อ node + กรอกค่า · งานจริงจังค่อยหยิบ Python มาช่วย</div>
+  </section>
+
+  <!-- 5 NETWORK -->
+  <section class="slide">
+    <span class="kicker">พื้นฐาน</span>
+    <h2>Network — ต่อ node เป็นสาย</h2>
+    <div class="chain">
+      <div class="node">Source</div><span class="arrow">→</span>
+      <div class="node">แปลง</div><span class="arrow">→</span>
+      <div class="node">แปลง</div><span class="arrow">→</span>
+      <div class="node alt">Output</div>
+    </div>
+    <ul>
+      <li>เส้น = ส่งข้อมูลจากตัวซ้ายไปตัวขวา</li>
+      <li>นอกจากเส้น — <b>parameter ก็ดึงค่าข้าม node ได้</b> โดยไม่ต้องลากเส้น (เดี๋ยวเจอใน Reference/Export)</li>
+      <li>กราฟทั้งหมดนี้แหละคือ "โปรแกรม" ของเรา</li>
+    </ul>
+  </section>
+
+  <!-- NAV / SHORTCUTS -->
+  <section class="slide">
+    <span class="kicker">พื้นฐาน</span>
+    <h2>Navigation &amp; Shortcuts ที่ต้องติดมือ</h2>
+    <div class="cols">
+      <div class="card2"><h3>เลื่อน / ดู network</h3>
+        <ul>
+          <li><b>ลากพื้นที่ว่าง</b> = pan เลื่อนจอ</li>
+          <li><b>scroll / MMB</b> = zoom เข้า-ออก</li>
+          <li><b>H</b> = home จัดวิวให้พอดี</li>
+          <li><b>U</b> ออกชั้นนอก · <b>I / Enter</b> เข้าใน COMP</li>
+          <li><b>MMB คลิก node</b> = ดู info (res, cook time)</li>
+        </ul></div>
+      <div class="card2"><h3>สร้าง / จัดการ node</h3>
+        <ul>
+          <li><b>Tab</b> = เปิด OP Create (พิมพ์ชื่อค้น)</li>
+          <li><b>RMB ลาก</b> = box select หลายตัว</li>
+          <li><b>A</b> = viewer active (คลิกเล่น UI / หมุน 3D)</li>
+          <li><b>C</b> ป้ายสี · <b>P</b> หน้า parameter</li>
+          <li><b>F1</b> = Perform mode (รันจริง เต็มจอ)</li>
+        </ul></div>
+    </div>
+    <div class="note">⚠️ shortcut ทำงานเมื่อเมาส์อยู่ใน network editor + Caps Lock ปิด</div>
+  </section>
+
+  <!-- 6 FAMILIES -->
+  <section class="slide">
+    <span class="kicker">พื้นฐาน</span>
+    <h2>Operator มี 7 ตระกูล = 7 ชนิดข้อมูล</h2>
+    <div class="fams">
+      <div class="fam top"><h3>TOP</h3><p>ภาพ/วิดีโอ<br>(GPU)</p></div>
+      <div class="fam chop"><h3>CHOP</h3><p>สัญญาณ/<br>ตัวเลข stream</p></div>
+      <div class="fam sop"><h3>SOP</h3><p>3D geometry<br>(CPU)</p></div>
+      <div class="fam pop"><h3>POP</h3><p>3D point/<br>particle (GPU)</p></div>
+      <div class="fam dat"><h3>DAT</h3><p>text/ตาราง/<br>Python</p></div>
+      <div class="fam mat"><h3>MAT</h3><p>material/<br>shader</p></div>
+      <div class="fam comp"><h3>COMP</h3><p>container/<br>UI/โมดูล</p></div>
+    </div>
+    <ul>
+      <li>แต่ละตระกูลมี <b>สีประจำตัวใน TD</b> (ตามชิปด้านบน) — ต่อในตระกูลเดียวกัน ข้ามตระกูลต้องมีตัวแปลง</li>
+      <li><b>POP</b> = ของใหม่ (2023) ทำ geometry/particle บน GPU เร็ว+ประหยัดเมมกว่า SOP มาก (SOP รันบน CPU) — งานหนักย้ายมา POP</li>
+    </ul>
+  </section>
+
+  <!-- 7 COOK -->
+  <section class="slide">
+    <span class="kicker">พื้นฐาน</span>
+    <h2>Cook — คำนวณเมื่อจำเป็นเท่านั้น</h2>
+    <p class="big">node จะ "cook" (คำนวณใหม่) ก็ต่อเมื่อ <b>มีคนปลายทางขอใช้ค่ามัน</b> และ <b>มีอะไรเปลี่ยน</b> เท่านั้น</p>
+    <ul>
+      <li>กิ่งที่ไม่มีใครดู ไม่มีใครใช้ = ไม่คำนวณ = ฟรี ไม่กินเครื่อง</li>
+      <li>เปิด viewer ดู node ไหน = สั่งให้มันคำนวณ → <b>ปิด viewer ที่ไม่ใช้ช่วยให้ลื่นขึ้น</b></li>
+    </ul>
+    <div class="note">เหมือน spreadsheet — แก้ช่องนึง มันคิดใหม่เฉพาะช่องที่เกี่ยวข้อง ไม่คิดทั้งแผ่น</div>
+  </section>
+
+  <!-- 8 REF VS EXPORT -->
+  <section class="slide">
+    <span class="kicker k2">ต่อค่าข้าม node</span>
+    <h2>Reference vs Export</h2>
+    <div class="cols">
+      <div class="card2"><h3>Reference (Expression)</h3>
+        <ul><li>พิมพ์สูตรในช่อง parameter</li><li><b>ใส่สูตร/คณิต/เงื่อนไขได้</b></li><li>ดึงจากอะไรก็ได้ (CHOP, param, เวลา)</li></ul>
+        <p class="mono" style="margin-top:10px;">op('lfo1')['chan1'] * 2</p></div>
+      <div class="card2"><h3>Export</h3>
+        <ul><li>ลาก CHOP channel มาวางทับ parameter</li><li><b>ใส่สูตรไม่ได้</b> — ส่งค่าดิบตรงๆ</li><li>รับจาก CHOP channel เท่านั้น</li></ul>
+        <p style="margin-top:10px; font-size:19px; color:var(--muted)">ลากเร็วดี เวลาไม่ต้องแต่งค่า</p></div>
+    </div>
+    <div class="note">จำง่ายๆ: ต้องแปลงค่า → Reference · เอาตรงๆ → Export · ทำ UI → Bind (สองทาง)</div>
+  </section>
+
+  <!-- 9 LOGIC -->
+  <section class="slide">
+    <span class="kicker k2">ต่อค่าข้าม node</span>
+    <h2>Logic ใน TD — ไม่มีปุ่ม if</h2>
+    <p class="big">TD เป็นสายข้อมูลที่ไหลตลอด เลยไม่ "กระโดดข้ามบรรทัด" แบบ if/else — แต่ใช้วิธี <b>เลือกว่าเส้นไหนจะไหลผ่าน</b> แทน</p>
+    <ul>
+      <li><b>Switch</b> = เลือก input ตาม index (เหมือนสับราง) — ตัวนี้แทน if/else ได้บ่อยสุด</li>
+      <li><b>Logic CHOP</b> = เทียบค่า/threshold → ได้ 0 หรือ 1 (จริง/เท็จ)</li>
+      <li>เงื่อนไขซับซ้อนจริงๆ → เขียน <b>Python</b> ใน Script/Execute</li>
+    </ul>
+    <div class="note">ตัวอย่าง Day 2: "มือโผล่ในเฟรมไหม" → Logic CHOP → Switch สลับภาพ idle/active</div>
+  </section>
+
+  <!-- 10 TUT1 -->
+  <section class="slide demo">
+    <span class="kicker">Tutorial 1 · 75 นาที</span>
+    <h1>Mouse → Feedback (paint)</h1>
+    <p class="lead">วาดด้วยเมาส์แล้วเส้นค้าง ค่อยๆ จาง — เข้าใจ feedback loop</p>
+    <div class="chain" style="margin-top:28px;">
+      <div class="node">Mouse In</div><span class="arrow">→</span>
+      <div class="node">Circle (brush)</div><span class="arrow">→</span>
+      <div class="node">Composite</div><span class="arrow">⟲</span>
+      <div class="node alt">Feedback + Level(0.95)</div>
+    </div>
+    <p class="hint">เล่าตอนสาธิต: เส้นวนกลับไม่ค้าง เพราะ Feedback หยิบ "ภาพเฟรมก่อน" มา · decay 0.90–0.99 = หางสั้น↔ยาว</p>
+  </section>
+
+  <!-- 11 TUT2 -->
+  <section class="slide demo">
+    <span class="kicker">Tutorial 2 · 45 นาที</span>
+    <h1>Mic → Visual (audio-reactive)</h1>
+    <p class="lead">เอาเสียงจริงมาขับภาพ — input ตัวที่สอง โครงเดิมกับเมื่อกี้</p>
+    <div class="chain" style="margin-top:28px;">
+      <div class="node">Audio Device In</div><span class="arrow">→</span>
+      <div class="node">Analyze / Spectrum</div><span class="arrow">→</span>
+      <div class="node">Lag</div><span class="arrow">→</span>
+      <div class="node alt">ขับภาพ</div>
+    </div>
+    <p class="hint">เน้น: "เสียงก็เป็น CHOP เหมือนเมาส์" · ค่าดิบสวิงแรง ต้อง Math/Lag ก่อนถึงนุ่ม</p>
+  </section>
+
+  <!-- 12 TUT3 -->
+  <section class="slide demo">
+    <span class="kicker">Tutorial 3 · 120 นาที</span>
+    <h1>Particle (instancing)</h1>
+    <p class="lead">หัวใจของงานปลายทาง — วาดทรงเดียวซ้ำเป็นหมื่นตัวในการวาดครั้งเดียว</p>
+    <ul style="margin-top:18px;">
+      <li>มี mesh ต้นแบบ 1 อัน + ตารางตำแหน่ง/สี → GPU ปั๊มซ้ำทีเดียว 50,000 ตัว ≈ ต้นทุนเท่าตัวเดียว</li>
+      <li>แหล่งตำแหน่งมาจาก CHOP / SOP / <b>TOP (พิกเซลของรูป)</b> — ตัว TOP นี่แหละสะพานไป "รูป → particle" วันสุดท้าย</li>
+    </ul>
+    <p class="hint">วันนี้ตำแหน่งมาจาก noise (ฝูงลอยๆ ขับเสียง) · Day 3 เปลี่ยนเป็นพิกเซลรูปที่ scan มา</p>
+  </section>
+
+  <!-- 13 SHOW & TELL -->
+  <section class="slide">
+    <span class="kicker">ปิด Day 1</span>
+    <h2>Show &amp; Tell</h2>
+    <p class="big">ทุกคนโชว์ 1 sketch — ไม่ต้องเพอร์เฟกต์ เล่าว่าทำอะไร ติดตรงไหน</p>
+    <ul>
+      <li>ทุกชิ้น = input → process → output (เห็น pattern ร่วม)</li>
+      <li>พรุ่งนี้: เปลี่ยน input เป็นของจริง (มือ + กล้อง) แล้วต่อเป็นระบบ</li>
+    </ul>
+    <div class="note">เซฟ .toe ทุกคน — พรุ่งนี้เอามาต่อ</div>
+  </section>
+
+  <div id="foot"><span>TouchDesigner Workshop · Day 1</span><span id="counter">1 / 13</span></div>
+</div></div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const stage = document.getElementById('stage');
+  const bar = document.getElementById('bar');
+  const counter = document.getElementById('counter');
+  const toast = document.getElementById('toast');
+  let i = 0;
+
+  function fitStage(){
+    const s = Math.min(window.innerWidth/1280, window.innerHeight/720);
+    stage.style.transform = 'scale('+s+')';
+  }
+  window.addEventListener('resize', fitStage); fitStage();
+
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach((s,k)=>s.classList.toggle('on', k===i));
+    bar.style.width = ((i+1)/slides.length*100)+'%';
+    counter.textContent = (i+1)+' / '+slides.length;
+  }
+  const next=()=>show(i+1), prev=()=>show(i-1);
+
+  function msg(t){ toast.textContent=t; toast.style.display='block'; clearTimeout(msg._t); msg._t=setTimeout(()=>toast.style.display='none',1800); }
+  function toggleFS(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+
+  // capture the stage at 2x (2560x1440) regardless of on-screen scale
+  async function capture(){
+    await document.fonts.ready;
+    const t = stage.style.transform; stage.style.transform='scale(1)';   // render at native 1280x720
+    const canvas = await html2canvas(stage, {scale:2, backgroundColor:null, width:1280, height:720, windowWidth:1280, windowHeight:720});
+    stage.style.transform = t; fitStage();
+    return canvas;
+  }
+  function dl(canvas, name){ const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download=name; a.click(); }
+
+  async function savePNG(){
+    msg('กำลังเซฟหน้านี้…');
+    const c = await capture();
+    dl(c, 'day1-slide-'+String(i+1).padStart(2,'0')+'.png');
+    msg('เซฟหน้า '+(i+1)+' แล้ว ✓');
+  }
+  async function saveAll(){
+    const start=i;
+    for(let k=0;k<slides.length;k++){
+      show(k); await new Promise(r=>setTimeout(r,250));
+      msg('กำลังเซฟ '+(k+1)+'/'+slides.length+'…');
+      const c=await capture(); dl(c,'day1-slide-'+String(k+1).padStart(2,'0')+'.png');
+      await new Promise(r=>setTimeout(r,350));   // กัน browser บล็อกดาวน์โหลดรัว
+    }
+    show(start); msg('เซฟครบ '+slides.length+' หน้า ✓ (ดูในโฟลเดอร์ Downloads)');
+  }
+
+  document.addEventListener('keydown', e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if(e.key==='Home') show(0);
+    else if(e.key==='End') show(slides.length-1);
+    else if(e.key.toLowerCase()==='f') toggleFS();
+    else if(e.key.toLowerCase()==='s') savePNG();
+  });
+  document.getElementById('fit').addEventListener('click', e=>{
+    const x=e.clientX/window.innerWidth; if(x>0.35) next(); else prev();
+  });
+  try{ new QRCode(document.getElementById('qr'), {text:'https://tinyurl.com/ddexp-workshop', width:240, height:240, colorDark:'#16202a', colorLight:'#ffffff', correctLevel:QRCode.CorrectLevel.M}); }catch(e){}
+  show(0);
+</script>
+</body>
+</html>

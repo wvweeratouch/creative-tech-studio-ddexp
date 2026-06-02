@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TouchDesigner Workshop — Curriculum (Instructor) · ดีดีเอ็กซ์พี</title>
+<title>TouchDesigner Workshop — Curriculum (Instructor · Core)</title>
 <style>
   :root{
     --ink:#16202a; --muted:#5b6b7a; --line:#e2e8f0; --soft:#f1f5f9;
@@ -57,6 +57,16 @@
   .gap .gh{font-size:15px; font-weight:700; color:var(--ink); margin-bottom:7px;}
   .gap .gh .tag{font-size:11px; font-weight:600; color:var(--muted);}
   .gap table{font-size:12.5px;}
+  /* client-context box (per-client framing) — amber, แยกจากแกน core ชัด */
+  .ctx{border:1px solid #fcd34d; border-left:4px solid var(--break); background:#fffbeb;
+    border-radius:10px; padding:12px 16px; margin:14px 0;}
+  .ctx .ch{font-size:13px; font-weight:700; color:#92400e; margin-bottom:6px;}
+  .ctx p,.ctx li{font-size:13px;}
+  .ctxtag{display:inline-block; font-size:11px; font-weight:600; color:#92400e;
+    background:#fffbeb; border:1px solid #fcd34d; border-radius:5px; padding:1px 7px; margin-left:4px;}
+  /* dev-foundation note */
+  .devnote{background:#eef6ff; border-left:3px solid var(--accent2); padding:8px 12px;
+    border-radius:0 6px 6px 0; font-size:13px; margin:8px 0;}
   /* run of show */
   .ros{background:#fbfdff; border:1px solid var(--line); border-radius:8px; padding:10px 14px; margin:10px 0;}
   .ros .rh{font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; margin-bottom:6px;}
@@ -87,16 +97,15 @@
 <!-- ===== COVER ===== -->
 <section class="card">
   <span class="pill">Instructor Curriculum · session-by-session</span>
-  <h1 style="margin-top:12px;">TouchDesigner Workshop</h1>
-  <p class="sub">Creative Tech Studio × <b>ดีดีเอ็กซ์พี</b> · 2 · 3 · 5 มิถุนายน 2026 · 10:30–18:30</p>
+  <h1 style="margin-top:12px;">TouchDesigner Workshop — Core Curriculum</h1>
+  <p class="sub">3 วัน · session-by-session · สำหรับทีม developer + designer · <b>ผู้สอน:</b> Wave Pongruengkiat</p>
 
-  <p style="font-size:13.5px; margin-top:14px;"><b>ผู้เรียน:</b> 8 (dev-heavy: 4 Fullstack · 2 Frontend · 2 Designer) + 2 PM สังเกตการณ์ ·
-  <b>ผู้สอน:</b> Wave Pongruengkiat</p>
+  <p style="font-size:13.5px; margin-top:14px;">นี่คือ <b>แกนกลาง (core)</b> ที่ reuse ได้หลายงาน — รายละเอียดลูกค้า/วัน/เวลา/องค์ประกอบทีม อยู่ในกล่อง <span class="ctxtag">📍 Client Context</span> ด้านล่าง</p>
 
   <p class="part h" style="margin-top:16px;">Learning Outcomes</p>
   <div class="outcomes">
     <div>1. สร้าง interactive system: input (camera/audio) → process (TD) → output ได้เอง</div>
-    <div>2. เริ่มโปรเจกต์ TD เองได้ + ประเมิน tech ที่เหมาะกับงานบริษัท</div>
+    <div>2. เริ่มโปรเจกต์ TD เองได้ + ประเมิน tech ที่เหมาะกับงานของตัวเอง/ทีม</div>
     <div>3. ต่อ TD เข้าระบบอื่น (OSC / MQTT / Web / LINE) ได้</div>
     <div>4. ทำ mini-project แบบทีม: concept → build → demo</div>
     <div>5. รู้วิธีเรียนต่อเอง (docs · community · AI-assisted)</div>
@@ -106,12 +115,77 @@
   <p class="principles"><b>Project-based</b> ทุก concept จบเป็นไฟล์รันได้ · <b>Composable</b> ของ Day 1+2 ประกอบเป็น Day 3 ·
   <b>Show &amp; Tell daily</b> ปิดทุกวันด้วยโชว์คนละ 1 ชิ้น · <b>Dev-first</b> map TD เข้า mental model เดิม</p>
 
-  <p class="part h" style="margin-top:14px;">วิธีอ่าน · แต่ละ session มี</p>
-  <p class="sub">⏱ เวลา + breakdown · 🎯 goal · <b>1.</b> ความสำคัญ · <b>2.</b> ประเด็นที่ต้องพูด ·
-  <b>3.</b> เนื้อหา + key scripts · <b>4.</b> Output · 🛠 เตรียมก่อน · ⏲ run-of-show · 📄 handout ·
+  <p class="part h" style="margin-top:14px;">วิธีอ่าน · แต่ละ session เรียงแบบนี้</p>
+  <p class="sub">🎯 goal · <b>⏲ run-of-show</b> (ขึ้นก่อน — เห็นโครงเวลาทั้ง session เลย) · <b>1.</b> ความสำคัญ · <b>2.</b> ประเด็นที่ต้องพูด ·
+  <b>3.</b> เนื้อหา + key scripts · <b>4.</b> Output · 🛠 เตรียมก่อน · 📄 handout ·
   <span style="color:var(--accent2);">กล่องไฮไลต์ = หัวข้อเจาะลึก (มี (gap) กำกับให้)</span></p>
   <p class="sub">Pedagogy dev vs designer: <code>teaching-approach.md</code> · ภาพรวมเวลา: <code>workshop-schedule.html</code> · workbook: <code>handout.html</code></p>
   <p class="sub" style="border-top:1px dashed var(--line); padding-top:8px; margin-top:8px;">⚠️ <b>ไฟล์นี้ = canonical source</b> ของเนื้อ session/scripts/run-of-show. <b>Derived views</b> ที่ต้องแก้ตามเมื่อเปลี่ยน session (ชื่อ/เวลา/script): <code>handout.html</code> + <code>workshop-schedule.html</code> + <code>mock-project-spec.md</code></p>
+</section>
+
+<!-- ===== CLIENT CONTEXT (per-client) ===== -->
+<section class="ctx">
+  <div class="ch">📍 Client Context — ดีดีเอ็กซ์พี (DDEXP) · มิ.ย. 2026</div>
+  <p><b>วัน/เวลา:</b> 2 · 3 · 5 มิถุนายน 2026 · 10:30–18:30 (พักเที่ยง 12:30–13:30 · เบรก 15:30–15:45) · on-site · รันเป็นภาษาไทย</p>
+  <p><b>ผู้เรียน:</b> 8 (dev-heavy: 4 Fullstack · 2 Frontend · 2 Designer) + 2 PM สังเกตการณ์ — frame TD สำหรับ dev ที่มาจาก code (ลึก/เร็วได้ ข้าม "node คืออะไร")</p>
+  <p><b>จุดแข็งทีม → ดึงมาใช้:</b> เก่ง web/frontend/LINE → เน้นหนัก <b>S2.4 (TD as web server / phone-as-controller)</b> · มี service designer → ดึงเต็มที่ <b>S3.3 (installation/experience)</b> · ถ้าทีมเคยแตะ AI/ML → <b>S2.1 MediaPipe</b> เข้าง่าย</p>
+  <p><b>ธุรกิจ:</b> engagement tech for events — โยงทุก session ว่า "build installation ลึกขึ้นเองได้" คือ value กับงานเขา</p>
+</section>
+
+<!-- ===== TD FOR DEVELOPERS (foundation) ===== -->
+<section class="card">
+  <span class="pill">Foundation · อ่านก่อน Day 1</span>
+  <h2 style="margin:10px 0 4px; font-size:21px;">TouchDesigner คืออะไร</h2>
+  <p class="sub">พื้นฐานที่ต้องเข้าใจก่อนลงมือ + ตารางเทียบกับเครื่องมือที่คุ้นเคย</p>
+
+  <div class="devnote">TD คือ <b>real-time node-based dataflow engine</b> — วาง <b>graph ของการแปลงข้อมูล</b> แล้ว engine รันให้ทุกเฟรม เฉพาะจุดที่จำเป็น (ไม่ต้องเขียน render loop เอง). การทำงานคล้าย spreadsheet / React render tree / RxJS</div>
+
+  <p class="part h" style="margin-top:14px;">TD ใช้ภาษา / เทคโนโลยีอะไร</p>
+  <p style="font-size:13.5px;"><b>engine + operator ทุกตัวเขียนด้วย C++ รันบน GPU</b> — งานหนัก (ภาพ, signal, 3D, render) ทำในชั้นนี้. ภาษาที่ใช้ร่วม (scripting) คือ <b>Python</b> ที่ฝังมาในตัว (embedded) — ไว้ทำ logic, control, glue. <b>ทำงานส่วนใหญ่ได้โดยไม่ต้องเขียน Python</b> แค่ต่อ node + กรอกค่า; งานจริงจังค่อยใช้ Python ช่วย. นอกจากนี้เขียน <b>GLSL</b> (shader บน GPU) ได้ และต่อ <b>custom operator ด้วย C++</b> ได้</p>
+  <table>
+    <tr><th>Python อยู่ตรงไหน</th><th>ทำอะไร</th><th>เทียบ dev</th></tr>
+    <tr><td>Parameter expression</td><td>Python บรรทัดเดียวในช่อง param เช่น <code>op('audio')['level']*200</code></td><td>inline binding <code>{count*2}</code></td></tr>
+    <tr><td>DAT (Text/Table)</td><td>ที่อยู่ของ script หลายบรรทัด / โมดูล</td><td>ไฟล์ <code>.js</code> ของคุณ</td></tr>
+    <tr><td>Callback (CHOP/DAT Execute)</td><td>รัน Python <b>เมื่อเกิด event</b> (ค่าเปลี่ยน, ปุ่มกด)</td><td><code>onChange</code> / event handler</td></tr>
+    <tr><td>Script CHOP/TOP/SOP</td><td>operator ที่ output มาจาก Python/NumPy ของคุณ</td><td>custom function คืนค่า</td></tr>
+    <tr><td>Extension</td><td>Python class ผูกกับ COMP — state + method</td><td>component controller / class</td></tr>
+  </table>
+  <p class="sub"><b>rule of thumb:</b> node สำหรับ dataflow/signal · Python สำหรับ logic, control flow, event, state, orchestration</p>
+
+  <p class="part h" style="margin-top:14px;">หลักที่ dev ต้อง internalize</p>
+  <ul style="font-size:13.5px;">
+    <li><b>Cook = pull-based / lazy.</b> node จะ cook เมื่อมี 2 อย่าง: (1) <b>มีคนปลายทางขอ data</b> (viewer เปิด / output node / export) <b>และ</b> (2) <b>มีเหตุให้ cook</b> (input/param เปลี่ยน หรือเป็น time-dependent เช่น noise/วิดีโอ/เสียง). → กิ่งที่ไม่มีใครใช้ = ฟรี. (เหมือน spreadsheet คำนวณเฉพาะ cell ที่กระทบ / React reconcile เฉพาะที่เปลี่ยน)</li>
+    <li><b>Operator = typed data families:</b> TOP=ภาพ/GPU · CHOP=สัญญาณ/ตัวเลข stream · SOP=3D geo · DAT=text/table/script · COMP=container/module. ต่อภายใน family เดียวกัน ข้าม family ต้องมี operator แปลง</li>
+    <li><b>Reactive ไม่ใช่ imperative</b> — ไม่สั่ง "ทำ 1 แล้ว 2" แต่ <b>ประกาศความสัมพันธ์</b> ("รัศมีวงกลม = ระดับ bass") แล้ว engine รักษาให้จริงตลอด = data binding</li>
+  </ul>
+
+  <p class="part h" style="margin-top:14px;">เทียบ p5.js — draw loop</p>
+  <div class="devnote">p5 คุณ <b>เขียน loop เอง</b>: <code>function draw(){ r=bass*200; ellipse(x,y,r,r) }</code> รันทุกเฟรม. TD <b>ไม่มี draw() ที่คุณเขียน</b> — cook cycle คือ loop เอง. คุณวาง graph: <code>Audio In → Analyze(bass) → Math(*200) → (bind) Circle → Render</code>. p5 รันทุกบรรทัดทุกเฟรมไม่ว่าจะเปลี่ยนไหม; TD cook เฉพาะ node ที่ "มีคนขอ + มีเหตุ" = ขี้เกียจกว่าโดย default</div>
+
+  <p class="part h" style="margin-top:14px;">dev concept → TD (ตารางแปลเร็ว)</p>
+  <table>
+    <tr><th>ปกติเขียน…</th><th>ใน TD…</th></tr>
+    <tr><td><code>draw()</code> / render loop</td><td>cook cycle ของ engine (ไม่ต้องเขียนเอง)</td></tr>
+    <tr><td><code>setInterval</code> / timer</td><td><b>Timer CHOP</b>, <b>Beat CHOP</b>, หรือ <code>me.time.frame % N</code></td></tr>
+    <tr><td><code>if/else</code></td><td><b>Switch</b> (เลือก input) / <b>Logic CHOP</b> / Python expression — <b>ไม่มี "if node"</b></td></tr>
+    <tr><td><code>for</code> วน data</td><td>SOP/CHOP array ops, <b>Replicator COMP</b>, หรือ Python</td></tr>
+    <tr><td>event handler (<code>onClick</code>)</td><td><b>Execute DAT</b> callback (CHOP/DAT/Panel)</td></tr>
+    <tr><td>ตัวแปรเก็บ state</td><td>output ของ operator (ค่าปัจจุบัน) · <b>Storage</b> (<code>store/fetch</code>) · extension attr</td></tr>
+    <tr><td>data binding <code>value={x}</code></td><td>parameter <b>reference</b> expression หรือ <b>export</b></td></tr>
+    <tr><td>import module · React component+props</td><td><b>.tox</b> COMP / <code>mod()</code> · <b>COMP + custom parameters</b></td></tr>
+    <tr><td>typed array / canvas+shader / mesh / JSON</td><td><b>CHOP</b> / <b>TOP</b> / <b>SOP</b> / <b>DAT</b></td></tr>
+    <tr><td>global <code>Date.now()</code></td><td><code>absTime.seconds</code> / <code>me.time</code> (time เป็น global)</td></tr>
+  </table>
+
+  <p class="part h" style="margin-top:14px;">mindset ที่ต้องพลิก + dev gotcha</p>
+  <ul style="font-size:13.5px;">
+    <li>ไม่มี <code>main()</code> / entry point — graph + cook loop คือโปรแกรม · อยากให้อัปเดตทุกเฟรม = ทำ node ให้ time-dependent (ไม่เขียน loop)</li>
+    <li>ไม่มี if/else node — branch คือ <b>เลือก data ที่ไหล</b> (Switch) ไม่ใช่กระโดดคำสั่ง</li>
+    <li>state อยู่ใน operator/Storage <b>ไม่ใช่ตัวแปร Python module-level</b> (อันนั้น reset ได้ ไม่เข้ากับ dataflow)</li>
+    <li>"ทุก node รันทุกเฟรม" = <b>ผิด</b> (pull-based) · "เปิด viewer = ฟรี" = <b>ผิด</b> (สร้าง cook request — ปิด viewer ที่ไม่ใช้ช่วย FPS)</li>
+    <li>งานภาพ/signal อย่าดึงมาวนใน Python (ช้า) เก็บบน node (GPU) · ทำ .exe ไม่ได้ — ship ไฟล์ .toe</li>
+  </ul>
+  <p class="sub">ที่มา verified: Derivative docs (First Things to Know · Cook · Operator) · Matthew Ragan · Interactive &amp; Immersive HQ</p>
 </section>
 
 <!-- ============ DAY 1 ============ -->
@@ -126,26 +200,26 @@
     <span class="time">10:30–11:00 · 30m</span><span class="brk">Concept 20 / Setup 10</span></div>
   <div class="goal">🎯 เห็นภาพ 3 วัน + รู้ว่ากำลังจะสร้างอะไร + เครื่องพร้อมรัน</div>
 
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div>
-    <p>ตั้ง "สัญญา" ของ workshop — ไม่สอน TD เป็นทฤษฎีลอย แต่ build งานจริง (Draw → Scan → Touch) แล้ว fundamental ทุกอย่าง serve ปลายทางนั้น. dev ต้องเห็นปลายทางก่อนถึง engage</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div>
-    <ul>
-      <li>TD = node-based visual programming สำหรับ real-time media (ไม่ใช่ video editor / game engine แต่ยืมแนวคิดทั้งคู่)</li>
-      <li>ใช้จริงที่ไหน — installation, stage visual, projection mapping, interactive exhibit (โชว์งาน 3–4 ชิ้น)</li>
-      <li><b>เชื่อมกับธุรกิจ ดีดีเอ็กซ์พี:</b> "พวกคุณมี service Engagement Tech for Events อยู่แล้ว — TD ทำให้ build installation ลึกขึ้นได้เอง"</li>
-      <li>ปลายทาง 3 วัน = mock "Draw → Scan → Touch" · "วันนี้ปูพื้น+sketch, พรุ่งนี้ต่อ input, วันสุดท้าย build+ตั้งโชว์"</li>
-    </ul></div>
-  <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
-    <p>ไม่มี script — orientation + verify install. เช็ค: TD เปิดได้ · license non-commercial · webcam/audio เข้า · เปิด mock teaser 30 วิ แล้วปิด</p></div>
-  <div class="part"><div class="h"><b>4.</b> Output</div>
-    <p>ทุกเครื่องเปิด TD ได้ + เห็น demo ปลายทาง + รู้ว่ากำลังจะไปไหน</p></div>
-
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–3</span><span>เปิด / welcome</span></li>
     <li><span class="t">3–18</span><span>concept + ตัวอย่างงาน + business framing + teaser mock</span></li>
     <li><span class="t">18–28</span><span>verify install ทีละเครื่อง (designer/คนติดยกมือ)</span></li>
     <li><span class="t">28–30</span><span>segue</span></li>
   </ol></div>
+
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div>
+    <p>ตั้งโจทย์ของ workshop ให้ชัด — สอน TD ผ่านการ build งานจริง (Draw → Scan → Touch) ไม่ใช่ทฤษฎีเพียงอย่างเดียว แล้ว fundamental ทุกอย่าง serve ปลายทางนั้น. dev ต้องเห็นปลายทางก่อนถึง engage</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div>
+    <ul>
+      <li>TD = node-based visual programming สำหรับ real-time media (ไม่ใช่ video editor / game engine แต่ยืมแนวคิดทั้งคู่)</li>
+      <li>ใช้จริงที่ไหน — installation, stage visual, projection mapping, interactive exhibit (โชว์งาน 3–4 ชิ้น)</li>
+      <li><b>เชื่อมกับธุรกิจของผู้เรียน:</b> "งานที่ทีมทำอยู่ + TD = build installation/interactive ลึกขึ้นเองได้" <span class="ctxtag">📍 DDEXP: engagement tech for events</span></li>
+      <li>ปลายทาง 3 วัน = mock "Draw → Scan → Touch" · "วันนี้ปูพื้น+sketch, พรุ่งนี้ต่อ input, วันสุดท้าย build+ตั้งโชว์"</li>
+    </ul></div>
+  <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
+    <p>ไม่มี script — orientation + verify install. เช็ค: TD เปิดได้ · license non-commercial · webcam/audio เข้า · เปิด mock teaser 30 วิ แล้วปิด</p></div>
+  <div class="part"><div class="h"><b>4.</b> Output</div>
+    <p>ทุกเครื่องเปิด TD ได้ + เห็น demo ปลายทาง + รู้ว่ากำลังจะไปไหน</p></div>
   <div class="foot">
     <div class="chip">🛠 <b>เตรียม:</b> mock teaser .toe · slide ตัวอย่างงาน · checklist install</div>
     <div class="chip">📄 <b>Handout:</b> ปก + "What we'll build" diagram + checklist</div>
@@ -157,6 +231,13 @@
   <div class="seshead"><span class="num">1.1</span><h3>TouchDesigner Thinking: Operators &amp; Logic</h3>
     <span class="time">11:00–12:30 · 90m</span><span class="brk">Concept 25 / Demo 35 / Hands-on 25 / Share 5</span></div>
   <div class="goal">🎯 อ่าน network เป็น · รู้ family ไหนทำอะไร · ต่อค่าข้าม operator ได้ (reference/export)</div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–25</span><span>mini-lecture: families + dataflow + ref/export</span></li>
+    <li><span class="t">25–60</span><span>live demo (สร้าง network ช้าๆ, อธิบาย ref vs export)</span></li>
+    <li><span class="t">60–85</span><span>hands-on: LFO→export→Circle + expression อ่านค่า</span></li>
+    <li><span class="t">85–90</span><span>ใครติดยกมือ + segue</span></li>
+  </ol></div>
 
   <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div>
     <p>Session ที่ทุกอย่างหลังจากนี้ยืนอยู่บน. ไม่เข้าใจ dataflow + วิธีต่อค่า → interactive ไม่เกิดเลย. จุด map TD เข้า mental model เดิมของ dev (reactive pipeline + data binding)</p></div>
@@ -182,6 +263,22 @@
     <p style="font-size:12.5px; color:var(--muted);">parameter มี 4 โหมด ดูจากสีช่อง: Constant=เทา · Expression(ref)=ฟ้า · Export=เขียว · Bind=ม่วง</p>
   </div>
 
+  <div class="gap">
+    <div class="gh">Logic / conditionals — ทำไมหา if/else ไม่เจอ <span class="tag">(gap · dev ถามแน่)</span></div>
+    <p style="font-size:13px;"><b>Paradigm:</b> ภาษาทั่วไป <code>if/else</code> = คุมว่า<i>โค้ดบรรทัดไหนรัน</i>. TD เป็น dataflow — ทุก node cook ตลอด ไม่มี "ข้ามบรรทัด" → ไม่ branch การรัน แต่ <b>เลือก/กรองว่า data เส้นไหนไหลผ่าน</b></p>
+    <table>
+      <tr><th>คิดแบบโค้ด</th><th>ใน TD ทำด้วย</th></tr>
+      <tr><td><code>switch</code> / <code>if…elif</code> เลือก 1 จากหลายทาง</td><td><b>Switch</b> CHOP/TOP/DAT (index เลือก input) — <b>นี่คือ if/else เวอร์ชัน TD</b></td></tr>
+      <tr><td><code>cond ? a : b</code></td><td><b>Switch</b> หรือ expression <code>a if cond else b</code> ในช่อง parameter</td></tr>
+      <tr><td><code>x &gt; 0.5</code> → true/false</td><td><b>Logic CHOP</b> (threshold→0/1) · <b>Math/Limit</b> — TD ไม่มี comparison node ตรงๆ</td></tr>
+      <tr><td><code>a &amp;&amp; b</code> · <code>!a</code></td><td><b>Logic CHOP</b> (And/Or/Not/Xor)</td></tr>
+      <tr><td><code>if event: doX()</code></td><td><b>Trigger CHOP → CHOP Execute DAT</b> (รัน Python)</td></tr>
+      <tr><td>logic ซับซ้อน / state / loop</td><td><b>เขียน Python</b> — Script CHOP, CHOP/DAT Execute · if/else จริงอยู่ตรงนี้</td></tr>
+    </table>
+    <p style="font-size:13px;"><b>ต้องเขียน Python ไหม?</b> ไม่เสมอ — เลือกเส้นทาง/threshold/boolean ง่ายๆ ใช้ node พอ (Switch/Logic) · เขียน Python เมื่อเงื่อนไขซ้อนหลายชั้น มี state หรือต้อง loop</p>
+    <p style="font-size:13px;"><b>ได้ใช้จริง Day 2 (S2.1):</b> "มืออยู่ในเฟรมไหม?" → confidence จาก MediaPipe → Logic CHOP (&gt;0.5→1/0) → Switch สลับ scene idle/active = "if hand present" แบบ TD</p>
+  </div>
+
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
     <p>Demo: <code>Circle TOP → Blur → Null</code>, ขยับ param ดู cook ไหลขวา</p>
     <pre><span class="c"># Reference / Expression — ใส่สูตรได้</span>
@@ -192,13 +289,6 @@ absTime.seconds               <span class="c"># เวลา (วินาที
     <p><b>shortcut:</b> <code>Tab</code> สร้าง op · <code>u</code> ขึ้น · <code>i</code> เข้า COMP · <code>h</code> home · middle-click = info. <b>DRY:</b> วาง <code>Null</code> เป็น anchor ก่อน reference (แก้ network ไม่พัง = abstraction layer)</p></div>
   <div class="part"><div class="h"><b>4.</b> Output</div>
     <p>network ที่ LFO ขับ param ผ่าน export + อีกตัวอ่านผ่าน expression · ผู้เรียนอ่าน network ออก บอกทิศ data ได้ · เซฟ .toe ตัวแรก</p></div>
-
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–25</span><span>mini-lecture: families + dataflow + ref/export</span></li>
-    <li><span class="t">25–60</span><span>live demo (สร้าง network ช้าๆ, อธิบาย ref vs export)</span></li>
-    <li><span class="t">60–85</span><span>hands-on: LFO→export→Circle + expression อ่านค่า</span></li>
-    <li><span class="t">85–90</span><span>ใครติดยกมือ + segue</span></li>
-  </ol></div>
   <div class="foot">
     <div class="chip">🛠 <b>เตรียม:</b> demo .toe เปล่า · slide "5 families" · cheat sheet shortcut</div>
     <div class="chip">📄 <b>Handout:</b> Operators & parameter modes + ตาราง ref vs export + ช่องจด</div>
@@ -210,27 +300,47 @@ absTime.seconds               <span class="c"># เวลา (วินาที
   <div class="seshead"><span class="num">1.2</span><h3>Tutorial 1: Visual Interactive (Mouse → Feedback)</h3>
     <span class="time">13:30–14:45 · 75m</span><span class="brk">Concept 10 / Demo 25 / Hands-on 35 / Share 5</span></div>
   <div class="goal">🎯 paint app ที่เมาส์วาดแล้วเส้นค้าง — เข้าใจ feedback loop + ใช้ ref/export จริง</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div>
-    <p>Sketch แรกที่ทำเอง — ใช้ ref/export จาก 1.1 ทันที. <b>Feedback loop</b> จะกลับมาใช้ตอน particle trail + drawing accumulation. ใช้เมาส์ (ยังไม่แตะกล้อง) เพื่อโฟกัส TD logic ก่อน</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div>
-    <ul><li>Feedback loop = output เฟรมก่อนป้อนกลับเข้าเฟรมนี้ = "ความจำ" ของภาพ (เหมือน state ที่ accumulate)</li>
-    <li>ทำไม <code>Feedback TOP</code> ต้องคู่ <code>Composite/Over</code> — วาดของใหม่ทับของเก่าที่จาง</li>
-    <li>decay = คูณ feedback ด้วยค่า &lt;1 ทุกเฟรม · segue: "ลองเปลี่ยน input จากเมาส์เป็นเสียง"</li></ul></div>
-  <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
-    <p>Chain: <code>Mouse In CHOP → Circle (brush) → Composite(over) ← Feedback TOP → Level(×0.95 fade) → out</code></p>
-    <pre>op('mousein1')['tx']   <span class="c"># brush Translate X</span>
-op('mousein1')['ty']   <span class="c"># brush Translate Y</span></pre>
-    <p>decay ที่ Level TOP ~0.95 → เส้นค่อยจาง · brush size/สี = designer เล่นตรงนี้</p></div>
-  <div class="part"><div class="h"><b>4.</b> Output</div>
-    <p>paint sketch: ลากเมาส์ = เส้นเรืองแสงค่อยจาง · เข้าใจ feedback loop ที่จะ reuse · เซฟ .toe</p></div>
+
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–10</span><span>concept feedback</span></li>
     <li><span class="t">10–35</span><span>live demo (สร้าง paint ทีละ node)</span></li>
     <li><span class="t">35–70</span><span>hands-on (ทำ + ปรับ brush/decay; designer จูนสี)</span></li>
     <li><span class="t">70–75</span><span>quick share</span></li>
   </ol></div>
-  <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo paint .toe · slide "feedback = state accumulation"</div>
-    <div class="chip">📄 <b>Handout:</b> node diagram paint + ช่องจด</div></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div>
+    <p>Sketch แรกที่ทำเอง — ใช้ ref/export จาก 1.1 ทันที. <b>Feedback loop</b> จะกลับมาใช้ตอน particle trail + drawing accumulation (Day 3 รูปวาดค้างบนจอ = กลไกเดียวกัน). เริ่มด้วยเมาส์ (ยังไม่แตะกล้อง) เพราะ input ตัวเดียว ตัวแปรน้อย ดีบักง่าย — โฟกัส TD logic ก่อน</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div>
+    <ul>
+    <li><b>Feedback loop คืออะไร:</b> เอา output ของ "เฟรมก่อน" ป้อนกลับมาผสมกับเฟรมนี้ → ภาพมี "ความจำ" สะสมขึ้นเรื่อยๆ. เทียบ dev: คล้าย state ที่ accumulate ทุก tick แต่ state เป็น "ภาพทั้งภาพ" (texture) ไม่ใช่ตัวเลขเดียว</li>
+    <li><b>ทำไมต้องมี <code>Composite/Over</code>:</b> ต้องเอา brush อันใหม่ "วางทับ" ภาพเก่าที่ค้างอยู่ — Over = alpha composite (ใหม่บนเก่า). ถ้าไม่ composite จะเห็นแค่ brush ตำแหน่งล่าสุด ไม่ค้าง</li>
+    <li><b>decay / fade:</b> ก่อนป้อนกลับ คูณภาพด้วยค่า &lt;1 (เช่น 0.95) ทุกเฟรม → เส้นเก่าจางหายช้าๆ. ไม่ลด = ค้างถาวรจอเต็ม · ลดมาก = หางสั้น · ลดน้อย = หางยาว</li>
+    <li>เทคนิคนี้เรียก <b>render-to-texture</b> — ภาพถูกวาดวนกลับเข้าตัวเอง ทำได้ด้วย node แค่ 2–3 ตัว</li>
+    <li>segue: "ตอนนี้ input เป็นเมาส์ — เปลี่ยนเป็นเสียง (1.3) หรือมือ (Day 2) ได้ ด้วยโครงเดิม"</li></ul></div>
+  <div class="part"><div class="h">💬 เล่าให้เห็นภาพ (ไว้พูด / ทำ slide)</div>
+    <p style="font-size:13px;">นึกถึงกระดานที่ไม่เคยลบ — ทุกเฟรมเราวาดจุดใหม่ลงไป แล้วทั้งกระดานจางลงนิดนึง. จุดที่เพิ่งวาดสว่างสุด รอยเก่าค่อยๆ จางเป็นหาง. ภาพปัจจุบัน = "ภาพเมื่อกี้ที่จางลง + ของใหม่ที่เพิ่งวาด"</p>
+    <p style="font-size:13px;">จุดที่ต้องเน้น: เส้นที่วนกลับไม่ทำให้ค้าง เพราะ Feedback TOP หยิบ "ภาพเฟรมก่อน" มา ไม่ใช่ภาพที่กำลังวาดอยู่ — เลยไม่วนตาย. คนมักกังวลตรงนี้ พูดให้ชัดแล้วสบายใจ</p>
+    <p style="font-size:13px;"><b>slide ที่ควรมี:</b> diagram วง feedback 1 รูป · before/after เปิด-ปิด decay · ตาราง decay value → ความยาวหาง</p></div>
+  <div class="part"><div class="h"><b>3.</b> เนื้อหา — demo ทีละขั้น (พูดไปทำไป)</div>
+    <p>Chain: <code>Mouse In CHOP → Circle TOP (brush) → Composite(over) ← Feedback TOP → Level(×0.95) → Out</code></p>
+    <ol style="font-size:13px;">
+      <li><code>Mouse In CHOP</code> → ได้ tx/ty ตำแหน่งเมาส์ (normalized) — "input ตัวแรกของเรา"</li>
+      <li><code>Circle TOP</code> เป็น brush → ref ตำแหน่งจากเมาส์ (ของ 1.1)</li>
+      <li><code>Composite TOP</code> (operation=Over) → ผสม brush กับภาพ feedback</li>
+      <li><code>Feedback TOP</code> → ชี้ source ไปที่ output ของ Composite (จุดที่ "วน")</li>
+      <li><code>Level TOP</code> (Opacity ~0.95) คั่นก่อนป้อนกลับ = decay</li></ol>
+    <pre>op('mousein1')['tx']   <span class="c"># brush Translate X</span>
+op('mousein1')['ty']   <span class="c"># brush Translate Y</span></pre>
+    <p style="font-size:13px;"><b>ปุ่มเล่น:</b> decay 0.90–0.99 (หางสั้น↔ยาว) · brush size/สี/glow = designer จูน · เสริม: Slope CHOP ให้ brush โตตามความเร็วเมาส์</p></div>
+  <div class="part"><div class="h">❓ dev อาจถาม</div>
+    <ul style="font-size:13px;">
+      <li><b>"feedback วนกลับ = loop ไม่จบไหม?"</b> → ไม่ Feedback TOP อ่าน "เฟรมก่อน" (1-frame delay) ไม่ใช่เฟรมปัจจุบัน</li>
+      <li><b>"ภาพค้างไปเรื่อยๆ เมมเต็มไหม?"</b> → ไม่ เป็น texture ขนาดคงที่ (res เดียว) เขียนทับทุกเฟรม</li>
+      <li><b>"reset ยังไง?"</b> → Feedback TOP มีปุ่ม reset (pulse) ล้าง buffer — Day 3 เอาไปทำปุ่ม reset งาน</li>
+      <li><b>"ต่างกับ Cache/Trails TOP ไหม?"</b> → มีหลายวิธี; feedback ยืดหยุ่นสุด เพราะจะ composite อะไรก่อนป้อนกลับก็ได้</li></ul></div>
+  <div class="part"><div class="h"><b>4.</b> Output</div>
+    <p>paint sketch: ลากเมาส์ = เส้นเรืองแสงค่อยจาง · เข้าใจ feedback loop ที่จะ reuse (particle trail + รูปค้าง Day 3) · เซฟ .toe</p></div>
+  <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo paint .toe (ทำเสร็จ 1 + เปล่า 1 ไว้สร้างสด) · slide "feedback = render-to-texture loop" + diagram วง</div>
+    <div class="chip">📄 <b>Handout:</b> node diagram paint + ตาราง decay value + ช่องจด</div></div>
 </section>
 
 <!-- S1.3 -->
@@ -238,6 +348,13 @@ op('mousein1')['ty']   <span class="c"># brush Translate Y</span></pre>
   <div class="seshead"><span class="num">1.3</span><h3>Tutorial 2: Audio Interactive (Mic → Visual)</h3>
     <span class="time">14:45–15:30 · 45m</span><span class="brk">Concept 8 / Demo 17 / Hands-on 15 / Share 5</span></div>
   <div class="goal">🎯 เอาเสียงจริงขับภาพ — CHOP เป็น input stream + audio analysis</div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–8</span><span>concept level/spectrum</span></li>
+    <li><span class="t">8–25</span><span>demo</span></li>
+    <li><span class="t">25–40</span><span>hands-on (เสียง → ขับ paint/วงกลม)</span></li>
+    <li><span class="t">40–45</span><span>share</span></li>
+  </ol></div>
   <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div>
     <p>Input ตัวที่สอง (เสียง) — ตอกย้ำ "อะไรก็เป็น CHOP ได้ แล้ว export ไปขับ param". audio-reactive = hello-world ของ TD, เร็วและ rewarding</p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div>
@@ -247,12 +364,6 @@ op('mousein1')['ty']   <span class="c"># brush Translate Y</span></pre>
     <p><code>Audio Device In → Analyze(RMS) → Lag → export</code> · spectrum: <code>Audio Spectrum CHOP</code> · normalize ด้วย <code>Math CHOP</code> (range 0..1) ก่อนใช้</p></div>
   <div class="part"><div class="h"><b>4.</b> Output</div>
     <p>ภาพเต้นตามเสียง (ตบมือ/พูด → visual ขยับ) · เห็น pattern input→analyze→export→visual ซ้ำ · เซฟ .toe</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–8</span><span>concept level/spectrum</span></li>
-    <li><span class="t">8–25</span><span>demo</span></li>
-    <li><span class="t">25–40</span><span>hands-on (เสียง → ขับ paint/วงกลม)</span></li>
-    <li><span class="t">40–45</span><span>share</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo audio-reactive .toe · เช็ค mic</div>
     <div class="chip">📄 <b>Handout:</b> chain audio + Analyze vs Spectrum</div></div>
 </section>
@@ -262,6 +373,13 @@ op('mousein1')['ty']   <span class="c"># brush Translate Y</span></pre>
   <div class="seshead"><span class="num">1.4</span><h3>Tutorial 3: First Particle Sketch</h3>
     <span class="time">15:45–17:45 · 120m</span><span class="brk">Concept 20 / Demo 40 / Hands-on 50 / Share 10</span></div>
   <div class="goal">🎯 particle ที่ react ได้ + เข้าใจ instancing และ 3D render pipeline</div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–20</span><span>concept instancing + 3D pipeline</span></li>
+    <li><span class="t">20–60</span><span>live demo (Grid→instance→render ทีละขั้น)</span></li>
+    <li><span class="t">60–110</span><span>hands-on (instance + ขับเสียง; คนไวลอง GLSL)</span></li>
+    <li><span class="t">110–120</span><span>share</span></li>
+  </ol></div>
   <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div>
     <p>ชิ้นใหญ่สุดของ Day 1 และเป็น <b>หัวใจของ mock</b>. เทคนิคนี้ Day 3 จะ reuse (เปลี่ยนต้นทางจาก noise → รูปวาด). มีเวลามากสุด ลงให้แน่น</p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div>
@@ -289,12 +407,6 @@ me.inputVal + op('audio_level')['chan1'] * 0.5</pre>
     <p>per-instance scale/count ขับด้วย audio (export จาก 1.3) · เกริ่น GLSL สำหรับคนไว (optional)</p></div>
   <div class="part"><div class="h"><b>4.</b> Output</div>
     <p>ฝูง particle (instanced sphere) ขยับ/เปลี่ยนขนาดตามเสียง · เข้าใจ instancing + render pipeline = พร้อม reuse Day 3 · เซฟ .toe</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–20</span><span>concept instancing + 3D pipeline</span></li>
-    <li><span class="t">20–60</span><span>live demo (Grid→instance→render ทีละขั้น)</span></li>
-    <li><span class="t">60–110</span><span>hands-on (instance + ขับเสียง; คนไวลอง GLSL)</span></li>
-    <li><span class="t">110–120</span><span>share</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo particle .toe · slide "instancing = GPU loop" + เทียบ InstancedMesh · fallback file</div>
     <div class="chip">📄 <b>Handout:</b> diagram render pipeline + instancing source</div></div>
 </section>
@@ -304,13 +416,14 @@ me.inputVal + op('audio_level')['chan1'] * 0.5</pre>
   <div class="seshead"><span class="num">1.5</span><h3>Show &amp; Tell — Day 1</h3>
     <span class="time">17:45–18:30 · 45m</span><span class="brk">Demo 30 / Discussion 15</span></div>
   <div class="goal">🎯 ทุกคนโชว์ 1 sketch + เห็นงานเพื่อน + Wave จับ level ทีมไว้ปรับ Day 2</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>หลัก Show & Tell daily — บังคับให้ทุกคนมี "ของเสร็จ" 1 ชิ้น. Wave อ่าน level จริงเพื่อปรับ pace Day 2 (ใคร peer helper, ใครต้องประคอง)</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>"โชว์คนละชิ้น ไม่ต้องเพอร์เฟกต์ — เล่าว่าทำอะไร ติดตรงไหน"</li><li>ชี้ pattern ร่วม: ทุกชิ้น = input→process→output · preview Day 2</li></ul></div>
-  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>presentation + feedback. Wave จดว่าใครแข็ง (peer helper Day 3) ใครต้องประคอง · ทุกคนมี ≥1 sketch โชว์ได้</p></div>
+
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–3</span><span>setup</span></li><li><span class="t">3–33</span><span>โชว์ทีละคน ~3 นาที</span></li>
     <li><span class="t">33–43</span><span>Wave สรุป pattern + preview Day 2</span></li><li><span class="t">43–45</span><span>ปิดวัน</span></li>
   </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>หลัก Show & Tell daily — บังคับให้ทุกคนมี "ของเสร็จ" 1 ชิ้น. Wave อ่าน level จริงเพื่อปรับ pace Day 2 (ใคร peer helper, ใครต้องประคอง)</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>"โชว์คนละชิ้น ไม่ต้องเพอร์เฟกต์ — เล่าว่าทำอะไร ติดตรงไหน"</li><li>ชี้ pattern ร่วม: ทุกชิ้น = input→process→output · preview Day 2</li></ul></div>
+  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>presentation + feedback. Wave จดว่าใครแข็ง (peer helper Day 3) ใครต้องประคอง · ทุกคนมี ≥1 sketch โชว์ได้</p></div>
   <div class="foot"><div class="chip">📄 <b>Handout:</b> ช่อง reflection "วันนี้ทำอะไรได้ / ติดอะไร / พรุ่งนี้อยากลองอะไร"</div></div>
 </section>
 
@@ -325,12 +438,13 @@ me.inputVal + op('audio_level')['chan1'] * 0.5</pre>
   <div class="seshead"><span class="num">2.0</span><h3>Recap &amp; Goal</h3>
     <span class="time">10:30–11:00 · 30m</span><span class="brk">Recap 20 / Setup 10</span></div>
   <div class="goal">🎯 เชื่อม Day 1 → Day 2 · ทุกคนพร้อมเครื่อง + เข้าใจว่าวันนี้สร้าง "ระบบ input"</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ดึง momentum + ย้ำ mental model ก่อนเพิ่มความซับซ้อน · dev ที่หลุดเมื่อวานได้ตามทัน</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>recap: ทุก sketch = input(เมาส์/เสียง)→export→visual</li><li>วันนี้เปลี่ยน input เป็นของจริง: มือ(MediaPipe) + กล้อง+กระดาษ(ArUco) + เก็บไฟล์ · ปิดด้วย "TD ต่อระบบบริษัทยังไง"</li></ul></div>
-  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>เปิดไฟล์เมื่อวาน · เช็ค plugin MediaPipe + webcam · ทุกเครื่องพร้อม + เห็น roadmap</p></div>
+
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–3</span><span>เปิด</span></li><li><span class="t">3–20</span><span>recap + ถาม-ตอบค้างคา</span></li><li><span class="t">20–30</span><span>verify plugin/webcam + segue</span></li>
   </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ดึง momentum + ย้ำ mental model ก่อนเพิ่มความซับซ้อน · dev ที่หลุดเมื่อวานได้ตามทัน</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>recap: ทุก sketch = input(เมาส์/เสียง)→export→visual</li><li>วันนี้เปลี่ยน input เป็นของจริง: มือ(MediaPipe) + กล้อง+กระดาษ(ArUco) + เก็บไฟล์ · ปิดด้วย "TD ต่อระบบอื่นยังไง"</li></ul></div>
+  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>เปิดไฟล์เมื่อวาน · เช็ค plugin MediaPipe + webcam · ทุกเครื่องพร้อม + เห็น roadmap</p></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> เช็ค mediapipe-touchdesigner plugin ลงครบทุกเครื่อง (สำคัญ — ทำก่อนเริ่ม)</div></div>
 </section>
 
@@ -339,18 +453,20 @@ me.inputVal + op('audio_level')['chan1'] * 0.5</pre>
   <div class="seshead"><span class="num">2.1</span><h3>Body &amp; Hand Tracking (MediaPipe → CHOP)</h3>
     <span class="time">11:00–12:30 · 90m</span><span class="brk">Concept 15 / Demo 30 / Hands-on 40 / Share 5</span></div>
   <div class="goal">🎯 ดึงตำแหน่งมือ/ตัวจากกล้องเป็น CHOP แล้วขับภาพ</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>Input ตัวเอกของ "Touch" ใน mock. ใช้ <b>mediapipe-touchdesigner plugin</b> (Torin Blankensmith) รัน MediaPipe ใน TD ผ่าน embedded Chromium — ไม่ต้องเขียน Python. ออกมาเป็น CHOP = ต่อ pattern เดิมได้ทันที. <b>DDEXP ทำ AI/ML อยู่แล้ว → เข้าง่าย</b></p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>MediaPipe = ML model ของ Google หา landmark มือ/ตัว/หน้า จากภาพกล้อง</li><li>plugin → output เป็น CHOP channel (ปลายนิ้ว tx/ty/tz) = "input stream อีกตัว เหมือนเมาส์/เสียง"</li><li>ค่าเป็น normalized 0..1 ต้อง map · ต้อง Lag/Filter ลด jitter</li></ul></div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–15</span><span>concept MediaPipe + normalized coords</span></li><li><span class="t">15–45</span><span>demo (วาง plugin → map นิ้ว → ขับ brush)</span></li>
+    <li><span class="t">45–85</span><span>hands-on (มือขับ particle/paint)</span></li><li><span class="t">85–90</span><span>share</span></li>
+  </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>Input ตัวเอกของ "Touch" ใน mock. ใช้ <b>mediapipe-touchdesigner plugin</b> (Torin Blankensmith) รัน MediaPipe ใน TD ผ่าน embedded Chromium — ไม่ต้องเขียน Python. ออกมาเป็น CHOP = ต่อ pattern เดิมได้ทันที. <b>ถ้าทีมเคยแตะ AI/ML จะเข้าง่าย</b> <span class="ctxtag">📍 DDEXP: ใช่</span></p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>MediaPipe = ML model ของ Google หา landmark มือ/ตัว/หน้า จากภาพกล้อง</li><li>plugin → output เป็น CHOP channel (ปลายนิ้ว tx/ty/tz) = "input stream อีกตัว เหมือนเมาส์/เสียง"</li><li>ค่าเป็น normalized 0..1 ต้อง map · ต้อง Lag/Filter ลด jitter</li>
+    <li>🔗 <b>ได้ใช้ logic จาก S1.1:</b> "มือโผล่ในเฟรมไหม?" → confidence channel → <b>Logic CHOP</b> (threshold→0/1) → <b>Switch</b> สลับ idle/active = "if hand present" แบบ TD (ไม่มี if node)</li></ul></div>
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
     <pre>op('handtrack')['index_tip:tx'] - 0.5   <span class="c"># map 0..1 → -0.5..0.5</span>
 0.5 - op('handtrack')['index_tip:ty']   <span class="c"># flip Y</span>
 <span class="c"># Lag/Filter CHOP ลด jitter · Slope CHOP = ความเร็วมือ (แรงผลักทีหลัง)</span></pre>
     <p>ชื่อ channel ขึ้นกับ version ของ plugin — เช็ค viewer</p></div>
   <div class="part"><div class="h"><b>4.</b> Output</div><p>มือขยับหน้ากล้อง → brush/particle ตาม · เชื่อม MediaPipe→CHOP→visual ได้ · เซฟ .toe</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–15</span><span>concept MediaPipe + normalized coords</span></li><li><span class="t">15–45</span><span>demo (วาง plugin → map นิ้ว → ขับ brush)</span></li>
-    <li><span class="t">45–85</span><span>hands-on (มือขับ particle/paint)</span></li><li><span class="t">85–90</span><span>share</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> plugin ลงครบ · demo .toe · lighting ห้องพอให้กล้องเห็นมือ</div>
     <div class="chip">📄 <b>Handout:</b> chain MediaPipe→CHOP + coordinate mapping</div></div>
 </section>
@@ -360,34 +476,70 @@ me.inputVal + op('audio_level')['chan1'] * 0.5</pre>
   <div class="seshead"><span class="num">2.2</span><h3>Computer Vision (Webcam + ArUco → Homography)</h3>
     <span class="time">13:30–14:45 · 75m</span><span class="brk">Concept 15 / Demo 30 / Hands-on 25 / Share 5</span></div>
   <div class="goal">🎯 scan รูปจากกระดาษให้ตรง (ตัด perspective) ด้วย ArUco + OpenCV</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ชิ้น <b>custom สุด นอกตำรา TD</b> (ไม่มีใน course ไหน) = ส่วนเสี่ยงสุดของ mock → allocate mentoring เยอะ. จุดที่ dev ได้เขียน Python จริงใน Script TOP — flatter สาย code</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>ปัญหา: กล้องมองกระดาษเฉียง → ภาพบิด. ต้อง "ดึงให้ตรง" = homography/perspective warp</li><li>ArUco = marker 4 อันมุมกระดาษ ใช้หาพิกัด 4 มุม → คำนวณ transform → warp เป็นสี่เหลี่ยมตรง</li><li><code>Script TOP</code> = เขียน Python (OpenCV) ได้ "นี่คือที่ที่พวกคุณเขียนโค้ดเต็มที่" · caveat: ลง <code>opencv-contrib-python</code></li></ul></div>
-  <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts <span style="color:var(--muted);font-weight:400;">(illustrative — ปรับตาม OpenCV version)</span></div>
-    <p><code>Video Device In TOP → Script TOP (ArUco+warp) → out</code></p>
-    <pre>import cv2, numpy as np
 
-def onCook(scriptOp):
-    src  = scriptOp.inputs[0].numpyArray(delImageData=True)
-    img  = np.flipud((src[:,:,:3]*255).astype(np.uint8))   <span class="c"># TD ภาพกลับหัว</span>
-    gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-    adict    = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
-    detector = cv2.aruco.ArucoDetector(adict, cv2.aruco.DetectorParameters())  <span class="c"># OpenCV >= 4.7</span>
-    corners, ids, _ = detector.detectMarkers(gray)
-    if ids is not None and len(ids) >= 4:
-        pts = order_by_id(corners, ids)              <span class="c"># helper เขียนเอง</span>
-        W = H = 1024
-        M = cv2.getPerspectiveTransform(pts, np.float32([[0,0],[W,0],[W,H],[0,H]]))
-        warped = cv2.warpPerspective(img, M, (W,H))
-        out = np.dstack([warped, np.full((H,W),255,np.uint8)]).astype(np.float32)/255
-        scriptOp.copyNumpyArray(np.flipud(out))
-    return</pre></div>
-  <div class="part"><div class="h"><b>4.</b> Output</div><p>กล้องเล็งกระดาษมี marker → เห็นภาพถูกดึงให้ตรงใน TD (ยังไม่ save) · เซฟ .toe</p></div>
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–15</span><span>concept homography + ArUco</span></li><li><span class="t">15–45</span><span>demo (Script TOP + warp, อธิบายโค้ด)</span></li>
-    <li><span class="t">45–70</span><span>hands-on (dev เล่นโค้ด · designer ถือกระดาษ/จัดกล้อง)</span></li><li><span class="t">70–75</span><span>share</span></li>
+    <li><span class="t">45–70</span><span>hands-on (dev เล่นโค้ด · ถือกระดาษ/จัดกล้อง)</span></li><li><span class="t">70–75</span><span>share</span></li>
   </ol></div>
-  <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> ลง opencv-contrib ทุกเครื่อง · พิมพ์ ArUco template · demo .toe · order_by_id helper</div>
-    <div class="chip">📄 <b>Handout:</b> flow scan + โค้ด ArUco เต็ม (copy ได้) + note ลง opencv-contrib</div></div>
+
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ชิ้น <b>custom สุด นอกตำรา TD</b> = ส่วนเสี่ยงสุดของ mock → allocate mentoring เยอะ. จุดที่ dev ได้เขียน Python จริงใน Script TOP — flatter สาย code</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul>
+    <li>ปัญหา: กล้องมองกระดาษเฉียง → ภาพบิด. ต้อง "ดึงให้ตรง" = <b>homography / perspective warp</b></li>
+    <li>ArUco = marker 4 อันที่มุมกระดาษ → หาพิกัด 4 มุม → คำนวณ transform → warp เป็นสี่เหลี่ยมตรง</li>
+    <li><code>Script TOP</code> = เขียน Python (OpenCV) ได้ — "นี่คือที่ที่พวกคุณเขียนโค้ดเต็มที่"</li></ul></div>
+
+  <div class="gap">
+    <div class="gh">ArUco scan — ทำให้ติดจริง (อ่านก่อนสอน) <span class="tag">(deep-dive · verified TD 2023.1+ / OpenCV 4.8)</span></div>
+    <p style="font-size:13px;"><b>✅ ข่าวดี: TD 2023.1+ มี OpenCV 4.8 + contrib + Python 3.11 มาให้แล้ว</b> — <code>import cv2</code> ได้เลย ไม่ต้องลงอะไร (เช็ค: <code>print(cv2.__version__)</code> → 4.8.0). ถ้าใครเผลอลง <code>opencv-python</code> ทับ → <code>cv2.aruco</code> หายทันที</p>
+    <p style="font-size:13px;"><b>⚠️ แก้ bug ที่เคยเขียนไว้:</b> <code>numpyArray(delImageData=True)</code> <b>ไม่มีจริง</b> — ใช้ <code>numpyArray()</code> เฉยๆ (signature จริง = <code>numpyArray(delayed=False, writable=False)</code>)</p>
+    <p style="font-size:13px;"><b>API ต้องเป็นของใหม่ (OpenCV ≥4.7):</b> <code>getPredefinedDictionary</code> → <code>DetectorParameters()</code> → <code>ArucoDetector(dict,params)</code> → <code>detectMarkers</code>. โค้ดเก่าจากเน็ต (<code>Dictionary_get</code>, <code>DetectorParameters_create</code>) <b>พังบน 4.8</b> — error ที่จะเจอ: <code>module 'cv2.aruco' has no attribute 'Dictionary_get'</code></p>
+    <p style="font-size:13px;"><b>setup กระดาษ:</b> print marker 4 อัน ID 0/1/2/3 = บนซ้าย/บนขวา/ล่างขวา/ล่างซ้าย · ใช้ <b>DICT_4X4_50</b> (cell ใหญ่ detect ง่ายที่ระยะ webcam) · ต้องมี <b>quiet zone</b> (ขอบขาวรอบ marker) ไม่งั้น detect ไม่ติด · กระดาษแบน แสงนุ่มไม่สะท้อน · ใช้ <b>center ของ marker</b> เป็นจุด (rotation-stable)</p>
+    <p style="font-size:13px; color:var(--accent2);"><b>2 จุดพังบ่อยใน Script TOP:</b> ① TD ภาพ origin <b>ล่างซ้าย</b>, OpenCV <b>บนซ้าย</b> → ต้อง <code>np.flipud</code> ทั้งขาเข้า-ออก (ลืม = ภาพกลับหัว/มิเรอร์) · ② TD = float32 0..1 RGBA, OpenCV = uint8 0..255 → แปลง dtype + <b>อย่าเผลอ convert BGR</b> (R-B จะสลับ) — pipeline นี้ใช้ RGB ตลอด</p>
+  </div>
+
+  <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts <span style="color:var(--muted);font-weight:400;">(verified · TD 2023.1+ OpenCV 4.8)</span></div>
+    <p><code>Video Device In TOP → Script TOP (ArUco+warp) → out</code> · ตั้ง Script TOP resolution = 1024×1024 · ไฟล์เต็ม + ตัว generate marker อยู่ที่ <code>aruco/</code> (เปิด/รันได้เลย)</p>
+    <pre>import numpy as np, cv2
+
+DICT = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
+_det = cv2.aruco.ArucoDetector(DICT, cv2.aruco.DetectorParameters())   # build ครั้งเดียว
+W = H = 1024
+DST = np.float32([[0,0],[W-1,0],[W-1,H-1],[0,H-1]])     # TL,TR,BR,BL
+_last = np.full((H,W,3), 0.15, np.float32)              # fallback: ภาพ scan ล่าสุด
+
+def order_by_id(corners, ids):                          # คืน [TL,TR,BR,BL] = ID 0,1,2,3 (ใช้ center)
+    if ids is None: return None
+    c = {int(i): mc.reshape(4,2).mean(0) for mc,i in zip(corners, ids.flatten())}
+    if not all(k in c for k in (0,1,2,3)): return None
+    return np.float32([c[0],c[1],c[2],c[3]])
+
+def onCook(scriptOp):
+    global _last
+    src = scriptOp.inputs[0].numpyArray()               # float32 RGBA 0..1, origin ล่างซ้าย
+    img = np.flipud(src)                                # flip -> origin บนซ้าย (OpenCV)
+    u8  = (np.clip(img[:,:,:3],0,1)*255).astype(np.uint8)
+    gray = cv2.cvtColor(u8, cv2.COLOR_RGB2GRAY)
+    corners, ids, _ = _det.detectMarkers(gray)
+    pts = order_by_id(corners, ids)
+    if pts is None:                                     # marker ไม่ครบ 4 -> ค้างภาพล่าสุด
+        scriptOp.copyNumpyArray(_alpha(np.flipud(_last))); return
+    M = cv2.getPerspectiveTransform(pts, DST)
+    warp = cv2.warpPerspective(u8, M, (W,H)).astype(np.float32)/255
+    _last = warp
+    scriptOp.copyNumpyArray(_alpha(np.flipud(warp)))    # flip กลับ + ใส่ alpha
+
+def _alpha(rgb):
+    a = np.ones((*rgb.shape[:2],1), np.float32)
+    return np.ascontiguousarray(np.concatenate([rgb,a],2))</pre></div>
+
+  <div class="part"><div class="h"><b>4.</b> Output</div><p>กล้องเล็งกระดาษมี marker → ภาพถูกดึงให้ตรงใน TD · <b>เอียงกระดาษแล้วภาพยังตรง = homography ทำงาน</b> · เซฟ .toe</p></div>
+
+  <div class="part"><div class="h">🧪 Test ก่อน workshop + fallback (สำคัญ)</div>
+    <p style="font-size:13px;"><b>15 นาที pre-flight:</b> print marker ติดมุมกระดาษ → <code>print(cv2.__version__)</code> ใน Textport (อยากเห็น 4.8.0) → ต่อ Video Device In → Script TOP → ใส่ debug <code>print(sorted(int(i) for i in ids.flatten()))</code> อยากเห็น <code>[0,1,2,3]</code> นิ่งๆ → เอา debug ออก เห็นภาพ flatten = ผ่าน</p>
+    <p style="font-size:13px;"><b>Fallback 3 ชั้น (อยู่ในโค้ดแล้ว):</b> ① marker &lt;4 อัน → ค้างภาพ scan ล่าสุด ไม่ดำวูบ · ② detect ไม่ติดสด → manual 4-corner pick (warp ไม่สนว่าจุดมาจากไหน แก้แค่ <code>pts</code>) · ③ ฉุกเฉิน → เปิดรูป pre-warped จาก Movie File In เล่นบทเรียนต่อ · <b>แสงนุ่มสม่ำเสมอ = ตัวแปรสำคัญสุด</b> (พังเพราะแสงมากกว่าโค้ด)</p></div>
+
+  <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> print marker 0–3 (มี quiet zone) · demo .toe · ไฟล์ <code>aruco/</code> · ไฟ LED แสงนุ่ม · รูป pre-warped สำรอง</div>
+    <div class="chip">📄 <b>Handout:</b> flow scan + โค้ด ArUco เต็ม (copy ได้) + ตาราง gotcha (API เก่า/ใหม่, flip, dtype)</div></div>
 </section>
 
 <!-- S2.3 -->
@@ -395,7 +547,12 @@ def onCook(scriptOp):
   <div class="seshead"><span class="num">2.3</span><h3>Data Capture (Save → File → Auto-load)</h3>
     <span class="time">14:45–15:30 · 45m</span><span class="brk">Concept 10 / Demo 20 / Hands-on 10 / Share 5</span></div>
   <div class="goal">🎯 save รูป scan ลงไฟล์ + TD โหลดไฟล์ใหม่กลับเองอัตโนมัติ</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ปิด loop kiosk: วาด→scan→เก็บ→โหลดกลับ. file I/O + folder watch = pattern ที่ใช้กับงาน data-driven ของบริษัทได้ (dev relevant)</p></div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–10</span><span>concept file pipeline</span></li><li><span class="t">10–30</span><span>demo (save + Folder DAT + auto-load)</span></li>
+    <li><span class="t">30–40</span><span>hands-on</span></li><li><span class="t">40–45</span><span>share</span></li>
+  </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ปิด loop kiosk: วาด→scan→เก็บ→โหลดกลับ. file I/O + folder watch = pattern ที่ใช้กับงาน data-driven ได้ (dev relevant)</p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>save ภาพ: <code>Movie File Out TOP</code> (snapshot) หรือ <code>cv2.imwrite</code> · ตั้งชื่อด้วย timestamp</li><li>folder watch <code>Folder DAT</code> + auto-load <code>DAT Execute</code> → "event-driven file pipeline เหมือน file watcher ที่พวกคุณเขียน"</li></ul></div>
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
     <pre>op('warped').save(f'scans/draw_{int(absTime.seconds)}.png')
@@ -406,10 +563,6 @@ def onTableChange(dat):
     op('moviefilein1').par.file = f'scans/{latest}'
     return</pre></div>
   <div class="part"><div class="h"><b>4.</b> Output</div><p>กดบันทึก → ไฟล์ PNG เกิด → TD เด้งโหลดภาพล่าสุดเอง · เซฟ .toe</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–10</span><span>concept file pipeline</span></li><li><span class="t">10–30</span><span>demo (save + Folder DAT + auto-load)</span></li>
-    <li><span class="t">30–40</span><span>hands-on</span></li><li><span class="t">40–45</span><span>share</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo .toe save+watch · โฟลเดอร์ scans/</div>
     <div class="chip">📄 <b>Handout:</b> chain save/watch + โค้ด (copy ได้)</div></div>
 </section>
@@ -418,8 +571,14 @@ def onTableChange(dat):
 <section class="card ses">
   <div class="seshead"><span class="num">2.4</span><h3>Web → Interactive (TD as Server)</h3>
     <span class="time">15:45–17:15 · 90m</span><span class="brk">Concept 20 / Demo 40 / Hands-on 25 / Share 5</span></div>
-  <div class="goal">🎯 เอา web stack ของ DDEXP มาใช้ในงาน interactive — TD เป็น server, มือถือคนดูคุม installation ผ่านเว็บ</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>Session ที่ <b>ทำให้ workshop เป็นของ DDEXP เต็มตัว</b>. จุดแข็ง #1 ของเขา = web/frontend/LINE — แทนที่จะทิ้งแล้วเรียน TD ใหม่หมด, อันนี้ <b>เอา superpower เดิมมาใช้ใน installation</b>. pattern "มือถือคนดู → คุมงานผ่านเว็บ" คือหัวใจของ Engagement Tech for Events ที่เขาขายอยู่แล้ว</p></div>
+  <div class="goal">🎯 เอา web stack ที่ทีมถนัดมาใช้ในงาน interactive — TD เป็น server, มือถือคนดูคุม installation ผ่านเว็บ</div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–20</span><span>concept: Web Render / Web Server / WebSocket / Web Client + pattern phone-controller</span></li>
+    <li><span class="t">20–60</span><span>demo: Web Server DAT เสิร์ฟหน้าเว็บ → มือถือแตะ → ขับ particle (+ Web Render TOP เอาเว็บมาเป็น layer)</span></li>
+    <li><span class="t">60–85</span><span>hands-on (มือถือตัวเองคุม visual ผ่าน WS; ต่อ backend/LINE ถ้าไว)</span></li><li><span class="t">85–90</span><span>share</span></li>
+  </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>Session ที่ <b>ทำให้ทีมเห็นว่า TD ต่อกับของที่ตัวเองถนัดได้</b>. ถ้าทีมเก่ง web/frontend — แทนที่จะทิ้งแล้วเรียน TD ใหม่หมด, อันนี้ <b>เอา superpower เดิมมาใช้ใน installation</b>. pattern "มือถือคนดู → คุมงานผ่านเว็บ" = engagement tech ของจริง <span class="ctxtag">📍 DDEXP: จุดแข็ง #1 = web/LINE — เน้นหนัก session นี้</span></p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul>
     <li><b>TD เป็น server ได้</b> — HTTP + WebSocket ในตัว (Web Server DAT)</li>
     <li>4 ตัว: Web Render TOP (เว็บ→texture) · Web Server DAT (TD host หน้าเว็บ+WS) · WebSocket DAT (ต่อ backend) · Web Client DAT (เรียก REST/LINE API)</li>
@@ -457,11 +616,6 @@ const ws = new WebSocket('ws://' + location.host);
 document.body.onclick = e =&gt; ws.send(JSON.stringify({push: 1.0}));
 &lt;/script&gt;</pre></div>
   <div class="part"><div class="h"><b>4.</b> Output</div><p>มือถือเปิดเบราว์เซอร์ → แตะ → particle ใน TD ขยับ (phone คุม installation จริง) · dev เห็นว่าเอา web stack ตัวเองมาต่อ TD ได้ · เซฟ .toe + control-page HTML</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–20</span><span>concept: Web Render / Web Server / WebSocket / Web Client + pattern phone-controller</span></li>
-    <li><span class="t">20–60</span><span>demo: Web Server DAT เสิร์ฟหน้าเว็บ → มือถือแตะ → ขับ particle (+ Web Render TOP เอาเว็บมาเป็น layer)</span></li>
-    <li><span class="t">60–85</span><span>hands-on (มือถือตัวเองคุม visual ผ่าน WS; ต่อ backend/LINE ถ้าไว)</span></li><li><span class="t">85–90</span><span>share</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo .toe (Web Server DAT + particle) + control-page HTML สำเร็จ · เครื่องกับมือถืออยู่ WiFi เดียวกัน · เช็ค IP/firewall port</div>
     <div class="chip">📄 <b>Handout:</b> 4 web operators + Web Server DAT callbacks + control-page HTML (copy ได้)</div></div>
 </section>
@@ -471,13 +625,14 @@ document.body.onclick = e =&gt; ws.send(JSON.stringify({push: 1.0}));
   <div class="seshead"><span class="num">2.5</span><h3>Show &amp; Tell — Day 2</h3>
     <span class="time">17:15–18:30 · 75m</span><span class="brk">Demo 40 / Discussion 20 / Brief 15</span></div>
   <div class="goal">🎯 โชว์ระบบ input + capture + เตรียมหัวเข้า Day 3 (มอง mock เป็นชิ้นเดียว)</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>จุดบรรจบ — มีชิ้นส่วน (มือ, scan, save, integrate) ครบ. ทำให้เห็นว่า "พรุ่งนี้แค่เอามาต่อกัน" ไม่ใช่เริ่มใหม่ (composable)</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>โชว์ระบบ input ของแต่ละคน · ชี้ว่าทุกชิ้น = บล็อกของ mock</li><li>brief mock Day 3 ล่วงหน้า ให้ไปคิดข้ามคืน + แบ่งทีม</li></ul></div>
-  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>demo + planning · ทุกคนมีระบบ input ≥1 ที่ทำงาน + เห็นภาพ Day 3 = ประกอบ ไม่ใช่เริ่มใหม่</p></div>
+
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–3</span><span>setup</span></li><li><span class="t">3–43</span><span>โชว์ทีละคน</span></li>
     <li><span class="t">43–58</span><span>discussion (ชิ้นส่วนต่อกันยังไง)</span></li><li><span class="t">58–73</span><span>brief mock Day 3 + แบ่งทีม</span></li><li><span class="t">73–75</span><span>ปิดวัน</span></li>
   </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>จุดบรรจบ — มีชิ้นส่วน (มือ, scan, save, integrate) ครบ. ทำให้เห็นว่า "พรุ่งนี้แค่เอามาต่อกัน" ไม่ใช่เริ่มใหม่ (composable)</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>โชว์ระบบ input ของแต่ละคน · ชี้ว่าทุกชิ้น = บล็อกของ mock</li><li>brief mock Day 3 ล่วงหน้า ให้ไปคิดข้ามคืน + แบ่งทีม</li></ul></div>
+  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>demo + planning · ทุกคนมีระบบ input ≥1 ที่ทำงาน + เห็นภาพ Day 3 = ประกอบ ไม่ใช่เริ่มใหม่</p></div>
   <div class="foot"><div class="chip">📄 <b>Handout:</b> reflection + "ชิ้นส่วนของฉันที่จะเอาไปต่อ Day 3"</div></div>
 </section>
 
@@ -492,12 +647,13 @@ document.body.onclick = e =&gt; ws.send(JSON.stringify({push: 1.0}));
   <div class="seshead"><span class="num">3.0</span><h3>Brief &amp; Recap: the Mock</h3>
     <span class="time">10:30–11:00 · 30m</span><span class="brk">Brief 20 / Team setup 10</span></div>
   <div class="goal">🎯 ทุกทีมเข้าใจ spec mock + แบ่งงานในทีม</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ตั้งโจทย์วันสุดท้ายให้ชัด ป้องกันหลงทาง · ย้ำว่าใช้ของที่ทำมาแล้ว 2 วัน</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>spec: <b>Draw → Scan → Particle → Hand-interact</b> · ทุกทีมทำตัวเดียวกัน (baseline) · คนไวต่อ stretch (body pose)</li><li>บทบาท: dev คุม logic/integration · designer คุมภาพ/template/นำเสนอ · timeline: build เช้า · UI+install บ่าย · present เย็น</li></ul></div>
-  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>review ชิ้นส่วนที่จะต่อ: instancing(1.4) + scan(2.2) + save(2.3) + hand(2.1) · ทุกทีมรู้ว่าทำอะไร + ใครทำส่วนไหน</p></div>
+
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–20</span><span>brief spec + demo เป้าหมาย</span></li><li><span class="t">20–30</span><span>แบ่งทีม/บทบาท + segue</span></li>
   </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ตั้งโจทย์วันสุดท้ายให้ชัด ป้องกันหลงทาง · ย้ำว่าใช้ของที่ทำมาแล้ว 2 วัน</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>spec: <b>Draw → Scan → Particle → Hand-interact</b> · ทุกทีมทำตัวเดียวกัน (baseline) · คนไวต่อ stretch (body pose)</li><li>บทบาท: dev คุม logic/integration · designer คุมภาพ/template/นำเสนอ · timeline: build เช้า · UI+install บ่าย · present เย็น</li></ul></div>
+  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>review ชิ้นส่วนที่จะต่อ: instancing(1.4) + scan(2.2) + save(2.3) + hand(2.1) · ทุกทีมรู้ว่าทำอะไร + ใครทำส่วนไหน</p></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> spec mock 1 หน้า · diagram ชิ้นส่วน→mock</div>
     <div class="chip">📄 <b>Handout:</b> spec + diagram pipeline + ช่องวางแผนทีม</div></div>
 </section>
@@ -507,7 +663,13 @@ document.body.onclick = e =&gt; ws.send(JSON.stringify({push: 1.0}));
   <div class="seshead"><span class="num">3.1</span><h3>Build Time: Compose &amp; Live Mentoring</h3>
     <span class="time">11:00–12:30 · 90m</span><span class="brk">Concept 15 / Build 70 / Share 5</span></div>
   <div class="goal">🎯 ต่อชิ้นส่วนเป็น mock ที่ทำงาน + เรียน modularity (COMP/.tox)</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>หัวใจ Day 3. drawing→particle ใช้ instancing จาก 1.4 (เปลี่ยน source เป็นรูปวาด). team dev บริษัทคิดเรื่อง architecture อยู่แล้ว — สอนห่อ COMP = กัน spaghetti + reuse ข้ามทีม</p></div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–15</span><span>concept compose + COMP/.tox</span></li>
+    <li><span class="t">15–85</span><span>build (Wave + peer เดินช่วยทีละทีม — เน้น ArUco/instance ที่เสี่ยง)</span></li>
+    <li><span class="t">85–90</span><span>quick share สถานะ</span></li>
+  </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>หัวใจ Day 3. drawing→particle ใช้ instancing จาก 1.4 (เปลี่ยน source เป็นรูปวาด). ทีม dev คิดเรื่อง architecture อยู่แล้ว — สอนห่อ COMP = กัน spaghetti + reuse ข้ามทีม</p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>ประกอบ: รูป scan(2.2/2.3) → source ของ instance (แทน noise ใน 1.4) → มือ(2.1) ดัน particle</li><li>เปลี่ยนรูป→particle: sample พิกเซลที่มีสี → ตำแหน่ง+สีของแต่ละ instance · "อย่าสร้าง network ก้อนเดียวยักษ์ — ห่อเป็นโมดูล"</li></ul></div>
 
   <div class="gap">
@@ -530,11 +692,6 @@ document.body.onclick = e =&gt; ws.send(JSON.stringify({push: 1.0}));
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
     <p>รูป→instance: <code>Movie File In (รูป scan) → TOP to CHOP (sample พิกเซลเป็นตำแหน่ง/สี) → instance source</code> · มือดัน: hand velocity (<code>Slope</code> จาก 2.1) → offset ตำแหน่ง instance</p></div>
   <div class="part"><div class="h"><b>4.</b> Output</div><p>mock: scan รูป → particle ตามรูป → ปัดมือ particle กระจาย · อย่างน้อย 1 ชิ้นห่อเป็น .tox มี custom param · เซฟ .toe + .tox</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–15</span><span>concept compose + COMP/.tox</span></li>
-    <li><span class="t">15–85</span><span>build (Wave + peer เดินช่วยทีละทีม — เน้น ArUco/instance ที่เสี่ยง)</span></li>
-    <li><span class="t">85–90</span><span>quick share สถานะ</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo mock เต็ม · ชิ้นส่วน .tox สำรอง (scan.tox, particles.tox) · peer helper จาก Day 1</div>
     <div class="chip">📄 <b>Handout:</b> diagram compose + วิธีห่อ COMP/.tox + custom param</div></div>
 </section>
@@ -544,6 +701,11 @@ document.body.onclick = e =&gt; ws.send(JSON.stringify({push: 1.0}));
   <div class="seshead"><span class="num">3.2</span><h3>TouchDesigner UI Essentials</h3>
     <span class="time">13:30–14:30 · 60m</span><span class="brk">Concept 12 / Demo 23 / Hands-on 20 / Share 5</span></div>
   <div class="goal">🎯 control panel คุมงานหน้างาน + presets — เบาๆ พอใช้ได้ (dev มี UI framework เองอยู่แล้ว)</div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–12</span><span>concept UI/custom param</span></li><li><span class="t">12–35</span><span>demo (custom param + reset + slider)</span></li>
+    <li><span class="t">35–55</span><span>hands-on (ทำหน้าคุม mock; designer จัด layout)</span></li><li><span class="t">55–60</span><span>share</span></li>
+  </ol></div>
   <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>งาน install ต้องมีหน้าคุม (เปิด/รีเซ็ต/ปรับค่า) โดยไม่แตะ network. สอนเบาตามที่ research แนะนำ — dev เก่ง UI อยู่แล้ว</p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>คนคุมงานไม่ควรต้องงม network สด · TD UI = COMP (Container/Button/Slider) + อ่านค่าเข้า Panel CHOP</li><li>custom parameter (จาก 3.1) = วิธีเร็วสุด · presets = Storage / parameter snapshot · "ไม่ต้องสวย แค่ใช้ได้ + reset ได้"</li></ul></div>
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
@@ -553,10 +715,6 @@ def onClick(panelValue):
     return</pre>
     <p>panel: <code>Container + Button/Slider → Panel CHOP อ่านค่า → export เข้า param</code> · presets ผ่าน Storage</p></div>
   <div class="part"><div class="h"><b>4.</b> Output</div><p>control panel เล็ก: reset + 2–3 slider คุมงาน · เซฟ .toe</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–12</span><span>concept UI/custom param</span></li><li><span class="t">12–35</span><span>demo (custom param + reset + slider)</span></li>
-    <li><span class="t">35–55</span><span>hands-on (ทำหน้าคุม mock; designer จัด layout)</span></li><li><span class="t">55–60</span><span>share</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo UI .toe · template container</div>
     <div class="chip">📄 <b>Handout:</b> วิธีเปิด custom param + ปุ่ม reset code</div></div>
 </section>
@@ -566,17 +724,18 @@ def onClick(panelValue):
   <div class="seshead"><span class="num">3.3</span><h3>Installation Thinking: Experience &amp; Placemaking</h3>
     <span class="time">14:30–15:30 · 60m</span><span class="brk">Mini-lecture 20 / Discussion 25 / Planning 15</span></div>
   <div class="goal">🎯 คิดงานเป็น "ประสบการณ์ในพื้นที่" ไม่ใช่แค่ของบนจอ — วางแผน install จริง</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ส่วน <b>value-add ที่ Wave (cultural futurist) เติม</b> — ไม่มีใน technical TD course. เปลี่ยน mindset จาก "ทำ effect" เป็น "ออกแบบประสบการณ์คน". <b>designer 2 คนเป็น service designer มืออาชีพ → ดึงจุดแข็งเขาเต็มที่</b></p></div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–20</span><span>mini-lecture experience/placemaking + ตัวอย่างงาน install</span></li>
+    <li><span class="t">20–45</span><span>discussion + ทีมวาดผัง install</span></li><li><span class="t">45–60</span><span>แต่ละทีมเล่าผัง + segue install จริง</span></li>
+  </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ส่วน <b>value-add ที่ Wave (cultural futurist) เติม</b> — ไม่มีใน technical TD course. เปลี่ยน mindset จาก "ทำ effect" เป็น "ออกแบบประสบการณ์คน". ถ้ามี designer/UX ในทีม = ดึงจุดแข็งเขาเต็มที่ <span class="ctxtag">📍 DDEXP: designer 2 คน = service designer มืออาชีพ</span></p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul>
     <li>งาน interactive อยู่ใน "พื้นที่" ไม่ใช่แค่จอ — คนเดินเข้ายังไง, รู้ได้ไงว่าเล่นได้, เล่นเสร็จแล้วไง</li>
     <li>วงจร: <b>attract → invite → engage → release</b></li>
     <li>placemaking — งานเปลี่ยนความหมายพื้นที่ · sightline, แสง, เสียง, การจราจรคน</li>
     <li>idle/attract state · ความทน (รันทั้งวัน, reset ง่าย, ไม่พังถ้าคนทำแปลกๆ) · "คิด UX ของพื้นที่จริงเหมือน UX ของ app"</li></ul></div>
   <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>discussion + planning · โจทย์: ทีมวาดผังการตั้ง mock (กล้อง/จอ/projector/คนยืน/idle state) · ได้แผนตั้งงาน + mindset experience-first</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–20</span><span>mini-lecture experience/placemaking + ตัวอย่างงาน install</span></li>
-    <li><span class="t">20–45</span><span>discussion + ทีมวาดผัง install</span></li><li><span class="t">45–60</span><span>แต่ละทีมเล่าผัง + segue install จริง</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> slide attract→release + ตัวอย่างงาน install · กระดาษ/ปากกาวาดผัง</div>
     <div class="chip">📄 <b>Handout:</b> วงจร attract→release + checklist install + ช่องวาดผัง</div></div>
 </section>
@@ -586,6 +745,12 @@ def onClick(panelValue):
   <div class="seshead"><span class="num">3.4</span><h3>Physical Prototyping &amp; Live Install</h3>
     <span class="time">15:45–17:30 · 105m</span><span class="brk">Build 30 / Install 45 / Optimize 20 / Buffer 10</span></div>
   <div class="goal">🎯 ตั้ง mock เป็น installation จริง (cardboard + projector) + จูน performance ให้รันลื่น</div>
+
+  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
+    <li><span class="t">0–30</span><span>ประกอบ station + ยิง projector</span></li>
+    <li><span class="t">30–75</span><span>install + จูนหน้างาน (Wave/peer ช่วย)</span></li>
+    <li><span class="t">75–95</span><span>optimization pass (หา/แก้จุดอืด + idle/reset)</span></li><li><span class="t">95–105</span><span>buffer/แก้ปัญหา</span></li>
+  </ol></div>
   <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>เอา digital ออกมาสู่ physical — cardboard scan station + ยิง projector จริง. งานรันสดหน้าคน FPS ห้ามตก</p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>ประกอบ cardboard scan station (ฐานกล้อง + กรอบกระดาษ) — craft + tech</li><li>ยิง projector: resolution, aspect ratio, fullscreen (<code>Window COMP</code>) · reset/idle จากแผน 3.3</li></ul></div>
 
@@ -606,11 +771,6 @@ def onClick(panelValue):
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
     <p>fullscreen: <code>Window COMP → ตั้ง projector → Perform Mode (F1)</code></p></div>
   <div class="part"><div class="h"><b>4.</b> Output</div><p>mock ตั้งเป็น installation จริง ยิง projector เล่นได้ · รันลื่น (รู้วิธีหา/แก้จุดอืด) · มี idle/reset</p></div>
-  <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–30</span><span>ประกอบ station + ยิง projector</span></li>
-    <li><span class="t">30–75</span><span>install + จูนหน้างาน (Wave/peer ช่วย)</span></li>
-    <li><span class="t">75–95</span><span>optimization pass (หา/แก้จุดอืด + idle/reset)</span></li><li><span class="t">95–105</span><span>buffer/แก้ปัญหา</span></li>
-  </ol></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> cardboard + เครื่องมือ · projector (อันเล็ก office — verify) · webcam + extender · demo Perform/Probe</div>
     <div class="chip">📄 <b>Handout:</b> checklist install + Window COMP/Perform + วิธีดู cook time + tips optimize</div></div>
 </section>
@@ -620,17 +780,18 @@ def onClick(panelValue):
   <div class="seshead"><span class="num">3.5</span><h3>Final Presentation</h3>
     <span class="time">17:30–18:30 · 60m</span><span class="brk">Demo 35 / Retro 15 / How-to-continue 10</span></div>
   <div class="goal">🎯 แต่ละทีมโชว์งานที่ตั้งจริง + retro + รู้วิธีเรียนต่อเอง</div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ปิด workshop ด้วยของจริงที่ "ship" แล้ว (เป้าหมายทั้งหมด) · ตอบ Learning Outcome #5 — เรียนต่อเองได้</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul>
-    <li>แต่ละทีมโชว์ + เล่า: ทำอะไร, ติดอะไร, แก้ยังไง, ต่อยอดกับงานบริษัทยังไง</li>
-    <li>retro: 3 วันได้อะไร, อะไรยาก, อะไร surprising</li>
-    <li><b>เรียนต่อ:</b> docs (derivative.ca) · community (TD forum, Discord) · YouTube (elekktronaut, Matthew Ragan) · AI-assisted (Claude/Gemini ช่วยเขียน Script TOP)</li>
-    <li>"พวกคุณเริ่มโปรเจกต์เองได้แล้ว — นี่คือเป้าหมาย"</li></ul></div>
-  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>presentation + reflection · ทุกทีมโชว์ installation ที่ทำงาน + รายการ resource · ถ่ายรูป/วิดีโอเก็บ portfolio</p></div>
+
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–5</span><span>setup</span></li><li><span class="t">5–40</span><span>โชว์ทีละทีม ~8–10 นาที</span></li>
     <li><span class="t">40–55</span><span>retro รวม</span></li><li><span class="t">55–60</span><span>how-to-continue + ปิด</span></li>
   </ol></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ปิด workshop ด้วยของจริงที่ "ship" แล้ว (เป้าหมายทั้งหมด) · ตอบ Learning Outcome #5 — เรียนต่อเองได้</p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul>
+    <li>แต่ละทีมโชว์ + เล่า: ทำอะไร, ติดอะไร, แก้ยังไง, ต่อยอดกับงานตัวเองยังไง</li>
+    <li>retro: 3 วันได้อะไร, อะไรยาก, อะไร surprising</li>
+    <li><b>เรียนต่อ:</b> docs (derivative.ca) · community (TD forum, Discord) · YouTube (elekktronaut, Matthew Ragan) · AI-assisted (Claude/Gemini ช่วยเขียน Script TOP)</li>
+    <li>"พวกคุณเริ่มโปรเจกต์เองได้แล้ว — นี่คือเป้าหมาย"</li></ul></div>
+  <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>presentation + reflection · ทุกทีมโชว์ installation ที่ทำงาน + รายการ resource · ถ่ายรูป/วิดีโอเก็บ portfolio</p></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> projector/ลำดับโชว์ · slide resource · ถ่ายรูป/วิดีโอ</div>
     <div class="chip">📄 <b>Handout:</b> resource เรียนต่อ + ช่อง retro + "โปรเจกต์ต่อไปของฉัน"</div></div>
 </section>
