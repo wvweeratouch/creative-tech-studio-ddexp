@@ -443,7 +443,7 @@ me.inputVal + op('audio_level')['chan1'] * 0.5</pre>
     <li><span class="t">0–3</span><span>เปิด</span></li><li><span class="t">3–20</span><span>recap + ถาม-ตอบค้างคา</span></li><li><span class="t">20–30</span><span>verify plugin/webcam + segue</span></li>
   </ol></div>
   <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ดึง momentum + ย้ำ mental model ก่อนเพิ่มความซับซ้อน · dev ที่หลุดเมื่อวานได้ตามทัน</p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>recap: ทุก sketch = input(เมาส์/เสียง)→export→visual</li><li>วันนี้เปลี่ยน input เป็นของจริง: มือ(MediaPipe) + กล้อง+กระดาษ(ArUco) + เก็บไฟล์ · ปิดด้วย "TD ต่อระบบอื่นยังไง"</li></ul></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>recap: ทุก sketch = input(เมาส์/เสียง)→export→visual</li><li>วันนี้เปลี่ยน input เป็นการขยับของคนจริง: ท่าทาง/มือ(MediaPipe → เปิดป้ายรูป) + movement(POP particle interactive: personal+crowd) + เก็บ moment · ปิดด้วย "TD ต่อมือถือ/ระบบอื่นยังไง"</li></ul></div>
   <div class="part"><div class="h"><b>3 + 4.</b> เนื้อหา / Output</div><p>เปิดไฟล์เมื่อวาน · เช็ค plugin MediaPipe + webcam · ทุกเครื่องพร้อม + เห็น roadmap</p></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> เช็ค mediapipe-touchdesigner plugin ลงครบทุกเครื่อง (สำคัญ — ทำก่อนเริ่ม)</div></div>
 </section>
@@ -452,117 +452,104 @@ me.inputVal + op('audio_level')['chan1'] * 0.5</pre>
 <section class="card ses">
   <div class="seshead"><span class="num">2.1</span><h3>Body &amp; Hand Tracking (MediaPipe → CHOP)</h3>
     <span class="time">11:00–12:30 · 90m</span><span class="brk">Concept 15 / Demo 30 / Hands-on 40 / Share 5</span></div>
-  <div class="goal">🎯 ดึงตำแหน่งมือ/ตัวจากกล้องเป็น CHOP แล้วขับภาพ</div>
+  <div class="goal">🎯 ดึงท่าทาง/มือจากกล้องเป็น CHOP → ทำ "เปิดป้ายรูป" (ท่าทาง → เผยรูป) = personal interaction ตัวแรก</div>
 
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–15</span><span>concept MediaPipe + normalized coords</span></li><li><span class="t">15–45</span><span>demo (วาง plugin → map นิ้ว → ขับ brush)</span></li>
-    <li><span class="t">45–85</span><span>hands-on (มือขับ particle/paint)</span></li><li><span class="t">85–90</span><span>share</span></li>
+    <li><span class="t">0–15</span><span>concept MediaPipe + normalized coords</span></li><li><span class="t">15–45</span><span>demo (plugin → map ท่าทาง → mask เปิดรูป)</span></li>
+    <li><span class="t">45–85</span><span>hands-on (ท่าทางเปิด/ปิดป้ายรูป)</span></li><li><span class="t">85–90</span><span>share</span></li>
   </ol></div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>Input ตัวเอกของ "Touch" ใน mock. ใช้ <b>mediapipe-touchdesigner plugin</b> (Torin Blankensmith) รัน MediaPipe ใน TD ผ่าน embedded Chromium — ไม่ต้องเขียน Python. ออกมาเป็น CHOP = ต่อ pattern เดิมได้ทันที. <b>ถ้าทีมเคยแตะ AI/ML จะเข้าง่าย</b> <span class="ctxtag">📍 DDEXP: ใช่</span></p></div>
-  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>MediaPipe = ML model ของ Google หา landmark มือ/ตัว/หน้า จากภาพกล้อง</li><li>plugin → output เป็น CHOP channel (ปลายนิ้ว tx/ty/tz) = "input stream อีกตัว เหมือนเมาส์/เสียง"</li><li>ค่าเป็น normalized 0..1 ต้อง map · ต้อง Lag/Filter ลด jitter</li>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>Input ตัวเอกของงาน interactive. ใช้ <b>mediapipe-touchdesigner plugin</b> (Torin Blankensmith) รัน MediaPipe ใน TD ผ่าน embedded Chromium — ไม่ต้องเขียน Python. ออกมาเป็น CHOP = ต่อ pattern เดิมได้ทันที. <b>ถ้าทีมเคยแตะ AI/ML จะเข้าง่าย</b> <span class="ctxtag">📍 DDEXP: ใช่</span></p></div>
+  <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>MediaPipe = ML model ของ Google หา landmark มือ/ตัว/หน้า จากภาพกล้อง</li><li>plugin → output เป็น CHOP channel (ปลายนิ้ว/ข้อมือ tx/ty/tz) = "input stream อีกตัว เหมือนเมาส์/เสียง"</li><li>ค่าเป็น normalized 0..1 ต้อง map · ต้อง Lag/Filter ลด jitter</li>
+    <li><b>"เปิดป้ายรูป" = personal interaction:</b> ท่าทาง/ตำแหน่งมือ → คุม <b>mask</b> → เผยรูปที่ซ่อนใต้ "ผ้าคลุม" · กางมือ/ขยับ = เปิด (Portal เวอร์ชันง่าย — คนเดียวมีบทบาท)</li>
     <li>🔗 <b>ได้ใช้ logic จาก S1.1:</b> "มือโผล่ในเฟรมไหม?" → confidence channel → <b>Logic CHOP</b> (threshold→0/1) → <b>Switch</b> สลับ idle/active = "if hand present" แบบ TD (ไม่มี if node)</li></ul></div>
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
-    <pre>op('handtrack')['index_tip:tx'] - 0.5   <span class="c"># map 0..1 → -0.5..0.5</span>
+    <p>chain: <code>MediaPipe → ตำแหน่งมือ/ระยะกางมือ (CHOP) → Math normalize → mask (Circle/Ramp TOP) → Composite: ผ้าคลุม + รูปที่เผย</code></p>
+    <pre>op('handtrack')['index_tip:tx'] - 0.5   <span class="c"># ตำแหน่งมือ map 0..1 → -0.5..0.5</span>
 0.5 - op('handtrack')['index_tip:ty']   <span class="c"># flip Y</span>
-<span class="c"># Lag/Filter CHOP ลด jitter · Slope CHOP = ความเร็วมือ (แรงผลักทีหลัง)</span></pre>
-    <p>ชื่อ channel ขึ้นกับ version ของ plugin — เช็ค viewer</p></div>
-  <div class="part"><div class="h"><b>4.</b> Output</div><p>มือขยับหน้ากล้อง → brush/particle ตาม · เชื่อม MediaPipe→CHOP→visual ได้ · เซฟ .toe</p></div>
+<span class="c"># ระยะกางมือ 2 ข้าง → ขนาด mask (กว้าง=เผยมาก) · Lag/Filter ลด jitter</span></pre>
+    <p>mask โต = เผยรูปมากขึ้น · ชื่อ channel ขึ้นกับ version ของ plugin — เช็ค viewer</p></div>
+  <div class="part"><div class="h"><b>4.</b> Output</div><p>ท่าทาง → เผย/ปิด "ป้ายรูป" (reveal) · เชื่อม MediaPipe→CHOP→mask ได้ · เซฟ .toe</p></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> plugin ลงครบ · demo .toe · lighting ห้องพอให้กล้องเห็นมือ</div>
     <div class="chip">📄 <b>Handout:</b> chain MediaPipe→CHOP + coordinate mapping</div></div>
 </section>
 
 <!-- S2.2 -->
 <section class="card ses">
-  <div class="seshead"><span class="num">2.2</span><h3>Computer Vision (Webcam + ArUco → Homography)</h3>
-    <span class="time">13:30–14:45 · 75m</span><span class="brk">Concept 15 / Demo 30 / Hands-on 25 / Share 5</span></div>
-  <div class="goal">🎯 scan รูปจากกระดาษให้ตรง (ตัด perspective) ด้วย ArUco + OpenCV</div>
+  <div class="seshead"><span class="num">2.2</span><h3>POP Particles → Interactive (personal + crowd)</h3>
+    <span class="time">13:30–14:45 · 75m</span><span class="brk">Concept 20 / Demo 30 / Hands-on 20 / Share 5</span></div>
+  <div class="goal">🎯 เรียน POP particles แล้วทำ interactive 2 โหมด — personal (ท่าทาง→POP) + crowd (การขยับรวม→POP)</div>
 
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
-    <li><span class="t">0–15</span><span>concept homography + ArUco</span></li><li><span class="t">15–45</span><span>demo (Script TOP + warp, อธิบายโค้ด)</span></li>
-    <li><span class="t">45–70</span><span>hands-on (dev เล่นโค้ด · ถือกระดาษ/จัดกล้อง)</span></li><li><span class="t">70–75</span><span>share</span></li>
+    <li><span class="t">0–15</span><span>concept POP + attribute (ตัวเลขติดจุด)</span></li>
+    <li><span class="t">15–45</span><span>demo: image → TOP to POP → Particle POP → Noise POP → render</span></li>
+    <li><span class="t">45–70</span><span>hands-on: 2 โหมด — personal (pose) + crowd (optical flow)</span></li>
+    <li><span class="t">70–75</span><span>share</span></li>
   </ol></div>
 
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ชิ้น <b>custom สุด นอกตำรา TD</b> = ส่วนเสี่ยงสุดของ mock → allocate mentoring เยอะ. จุดที่ dev ได้เขียน Python จริงใน Script TOP — flatter สาย code</p></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ตัว "wow" ของงาน — particle ฝูงใหญ่บน GPU ที่ react กับการขยับของคน. <b>POP</b> = ตระกูลใหม่ที่ทำ geometry/particle บน GPU โดยตรง. ปูทาง 2 โหมดที่จะไปต่อ Day 3: <b>personal</b> (คนเดียวมีพลัง) + <b>crowd</b> (ทั้งกลุ่มขยับร่วมกัน)</p></div>
+
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul>
-    <li>ปัญหา: กล้องมองกระดาษเฉียง → ภาพบิด. ต้อง "ดึงให้ตรง" = <b>homography / perspective warp</b></li>
-    <li>ArUco = marker 4 อันที่มุมกระดาษ → หาพิกัด 4 มุม → คำนวณ transform → warp เป็นสี่เหลี่ยมตรง</li>
-    <li><code>Script TOP</code> = เขียน Python (OpenCV) ได้ — "นี่คือที่ที่พวกคุณเขียนโค้ดเต็มที่"</li></ul></div>
+    <li><b>POP ทำงานกับ "จุด" + "attribute"</b> — attribute = ตัวเลขที่ติดกับแต่ละจุด (position float3, color RGBA). ภาพกลายเป็นจุดเป็นล้าน แล้วเล่นกับตัวเลขของแต่ละจุดบน GPU</li>
+    <li><b>TOP to POP</b> = ภาพ → จุด POP · <b>Particle POP</b> = spawn + เก็บ state (อายุ/อัตราเกิด/จำนวน) มี feedback ในตัว · ต้องประกาศ color/factor เป็น <b>in-attribute</b> ไม่งั้นหาย</li>
+    <li>render เหมือนเดิม: <code>Geo → Render TOP + Camera + Light</code></li></ul></div>
 
   <div class="gap">
-    <div class="gh">ArUco scan — ทำให้ติดจริง (อ่านก่อนสอน) <span class="tag">(deep-dive · verified TD 2023.1+ / OpenCV 4.8)</span></div>
-    <p style="font-size:13px;"><b>✅ ข่าวดี: TD 2023.1+ มี OpenCV 4.8 + contrib + Python 3.11 มาให้แล้ว</b> — <code>import cv2</code> ได้เลย ไม่ต้องลงอะไร (เช็ค: <code>print(cv2.__version__)</code> → 4.8.0). ถ้าใครเผลอลง <code>opencv-python</code> ทับ → <code>cv2.aruco</code> หายทันที</p>
-    <p style="font-size:13px;"><b>⚠️ แก้ bug ที่เคยเขียนไว้:</b> <code>numpyArray(delImageData=True)</code> <b>ไม่มีจริง</b> — ใช้ <code>numpyArray()</code> เฉยๆ (signature จริง = <code>numpyArray(delayed=False, writable=False)</code>)</p>
-    <p style="font-size:13px;"><b>API ต้องเป็นของใหม่ (OpenCV ≥4.7):</b> <code>getPredefinedDictionary</code> → <code>DetectorParameters()</code> → <code>ArucoDetector(dict,params)</code> → <code>detectMarkers</code>. โค้ดเก่าจากเน็ต (<code>Dictionary_get</code>, <code>DetectorParameters_create</code>) <b>พังบน 4.8</b> — error ที่จะเจอ: <code>module 'cv2.aruco' has no attribute 'Dictionary_get'</code></p>
-    <p style="font-size:13px;"><b>setup กระดาษ:</b> print marker 4 อัน ID 0/1/2/3 = บนซ้าย/บนขวา/ล่างขวา/ล่างซ้าย · ใช้ <b>DICT_4X4_50</b> (cell ใหญ่ detect ง่ายที่ระยะ webcam) · ต้องมี <b>quiet zone</b> (ขอบขาวรอบ marker) ไม่งั้น detect ไม่ติด · กระดาษแบน แสงนุ่มไม่สะท้อน · ใช้ <b>center ของ marker</b> เป็นจุด (rotation-stable)</p>
-    <p style="font-size:13px; color:var(--accent2);"><b>2 จุดพังบ่อยใน Script TOP:</b> ① TD ภาพ origin <b>ล่างซ้าย</b>, OpenCV <b>บนซ้าย</b> → ต้อง <code>np.flipud</code> ทั้งขาเข้า-ออก (ลืม = ภาพกลับหัว/มิเรอร์) · ② TD = float32 0..1 RGBA, OpenCV = uint8 0..255 → แปลง dtype + <b>อย่าเผลอ convert BGR</b> (R-B จะสลับ) — pipeline นี้ใช้ RGB ตลอด</p>
+    <div class="gh">POP particle — สายหลัก + Math Combine (operator หัวใจ)</div>
+    <p style="font-size:13px;">สาย: <code>image/Noise TOP → TOP to POP → Particle POP → Noise POP → Math Combine POP → render</code></p>
+    <p style="font-size:13px;"><b>Math Combine POP</b> = ที่ที่เอา attribute มาคำนวณ/รวมสร้างอันใหม่. งานนี้: <b>factor (จากการขยับของคน) × noise → + position</b> → จุดที่ "ถูกกวน" ขยับเยอะ จุดนิ่งอยู่เฉย</p>
+    <p style="font-size:13px;"><b>กับดัก:</b> attribute ต้อง component เท่ากันถึงคูณได้ — <code>color</code> float4 ต้องใช้ <code>color.rgb</code> (float3) ให้ตรง noise · ตั้ง noise size = <b>vector</b> ก่อนถึง offset 3 แกนได้</p>
   </div>
 
-  <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts <span style="color:var(--muted);font-weight:400;">(verified · TD 2023.1+ OpenCV 4.8)</span></div>
-    <p><code>Video Device In TOP → Script TOP (ArUco+warp) → out</code> · ตั้ง Script TOP resolution = 1024×1024 · ไฟล์เต็ม + ตัว generate marker อยู่ที่ <code>aruco/</code> (เปิด/รันได้เลย)</p>
-    <pre>import numpy as np, cv2
+  <div class="gap">
+    <div class="gh">2 โหมด interactive — personal ↔ crowd</div>
+    <table>
+      <tr><th></th><th>Personal</th><th>Crowd</th></tr>
+      <tr><td>จับอะไร</td><td>ตัวบุคคล (pose/มือ)</td><td>การขยับรวมทั้งภาพ</td></tr>
+      <tr><td>เทคนิค</td><td>MediaPipe (จาก 2.1) → ตำแหน่งข้อต่อ</td><td><b>Optical Flow TOP</b> → motion field</td></tr>
+      <tr><td>เป็น factor</td><td>มือ/ข้อต่อ = จุดกวน particle</td><td>R/G ของ flow = "แรง" ผลักทั้งฝูง</td></tr>
+      <tr><td>ความรู้สึก</td><td>"ฉันมีพลัง"</td><td>"เราขยับมันด้วยกัน"</td></tr>
+    </table>
+    <p style="font-size:13px;"><b>personal:</b> เอาตำแหน่งมือ (2.1) มาเป็น lookup factor → particle ฟุ้งตามมือ · <b>crowd:</b> เปลี่ยน factor เป็น Optical Flow ของทั้งเฟรม → ทุกคนช่วยกันดันฝูง · <b>โครงเดียวกัน เปลี่ยนแค่ factor</b></p>
+  </div>
 
-DICT = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
-_det = cv2.aruco.ArucoDetector(DICT, cv2.aruco.DetectorParameters())   # build ครั้งเดียว
-W = H = 1024
-DST = np.float32([[0,0],[W-1,0],[W-1,H-1],[0,H-1]])     # TL,TR,BR,BL
-_last = np.full((H,W,3), 0.15, np.float32)              # fallback: ภาพ scan ล่าสุด
+  <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
+    <p>factor lookup: <code>source → Monochrome (luminance) → Lookup Texture POP (factor1, offset 0.5)</code> → ใช้ใน Math Combine</p>
+    <pre>me.inputVal + op('factor1') * 0.5   <span class="c"># factor ขับ offset (concept)</span>
+<span class="c"># personal: factor = mask รอบมือ (จาก MediaPipe 2.1)</span>
+<span class="c"># crowd:    factor = Optical Flow TOP ของทั้งเฟรม</span></pre>
+    <p>ไฟล์ร่าง + ขั้นตอนเต็ม: <code>pop-particles-DRAFT.html</code> · craft (trails/bloom/velocity color) ดู aesthetic playbook</p></div>
 
-def order_by_id(corners, ids):                          # คืน [TL,TR,BR,BL] = ID 0,1,2,3 (ใช้ center)
-    if ids is None: return None
-    c = {int(i): mc.reshape(4,2).mean(0) for mc,i in zip(corners, ids.flatten())}
-    if not all(k in c for k in (0,1,2,3)): return None
-    return np.float32([c[0],c[1],c[2],c[3]])
+  <div class="part"><div class="h"><b>4.</b> Output</div><p>ฝูง POP particle ที่ react กับการขยับ — สลับได้ 2 โหมด (มือ / ฝูงชน) · เซฟ .toe</p></div>
 
-def onCook(scriptOp):
-    global _last
-    src = scriptOp.inputs[0].numpyArray()               # float32 RGBA 0..1, origin ล่างซ้าย
-    img = np.flipud(src)                                # flip -> origin บนซ้าย (OpenCV)
-    u8  = (np.clip(img[:,:,:3],0,1)*255).astype(np.uint8)
-    gray = cv2.cvtColor(u8, cv2.COLOR_RGB2GRAY)
-    corners, ids, _ = _det.detectMarkers(gray)
-    pts = order_by_id(corners, ids)
-    if pts is None:                                     # marker ไม่ครบ 4 -> ค้างภาพล่าสุด
-        scriptOp.copyNumpyArray(_alpha(np.flipud(_last))); return
-    M = cv2.getPerspectiveTransform(pts, DST)
-    warp = cv2.warpPerspective(u8, M, (W,H)).astype(np.float32)/255
-    _last = warp
-    scriptOp.copyNumpyArray(_alpha(np.flipud(warp)))    # flip กลับ + ใส่ alpha
+  <div class="part"><div class="h">⚠️ หมายเหตุ</div>
+    <p style="font-size:13px;"><b>POP ต้องใช้ TD รุ่นที่มี POP</b> (เช็คเครื่องก่อน — รุ่นใหม่มีแล้ว) · ถ้าเครื่องไหนไม่มี → <code>particlesGPU</code> (stable) ทำได้เหมือนกัน. <b>Trail POP</b> โหดกับเครื่อง — ตั้งค่าก่อนค่อยต่อ + วางท้ายสุด · เริ่ม particle น้อยก่อน</p>
+    <p style="font-size:13px;"><b>ArUco scan</b> = ทำเป็น library สำเร็จให้ (ไฟล์ <code>aruco/</code>) — เสียบใช้ได้ ไม่สอนสด เพราะโฟกัสที่ความสนุก/movement</p></div>
 
-def _alpha(rgb):
-    a = np.ones((*rgb.shape[:2],1), np.float32)
-    return np.ascontiguousarray(np.concatenate([rgb,a],2))</pre></div>
-
-  <div class="part"><div class="h"><b>4.</b> Output</div><p>กล้องเล็งกระดาษมี marker → ภาพถูกดึงให้ตรงใน TD · <b>เอียงกระดาษแล้วภาพยังตรง = homography ทำงาน</b> · เซฟ .toe</p></div>
-
-  <div class="part"><div class="h">🧪 Test ก่อน workshop + fallback (สำคัญ)</div>
-    <p style="font-size:13px;"><b>15 นาที pre-flight:</b> print marker ติดมุมกระดาษ → <code>print(cv2.__version__)</code> ใน Textport (อยากเห็น 4.8.0) → ต่อ Video Device In → Script TOP → ใส่ debug <code>print(sorted(int(i) for i in ids.flatten()))</code> อยากเห็น <code>[0,1,2,3]</code> นิ่งๆ → เอา debug ออก เห็นภาพ flatten = ผ่าน</p>
-    <p style="font-size:13px;"><b>Fallback 3 ชั้น (อยู่ในโค้ดแล้ว):</b> ① marker &lt;4 อัน → ค้างภาพ scan ล่าสุด ไม่ดำวูบ · ② detect ไม่ติดสด → manual 4-corner pick (warp ไม่สนว่าจุดมาจากไหน แก้แค่ <code>pts</code>) · ③ ฉุกเฉิน → เปิดรูป pre-warped จาก Movie File In เล่นบทเรียนต่อ · <b>แสงนุ่มสม่ำเสมอ = ตัวแปรสำคัญสุด</b> (พังเพราะแสงมากกว่าโค้ด)</p></div>
-
-  <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> print marker 0–3 (มี quiet zone) · demo .toe · ไฟล์ <code>aruco/</code> · ไฟ LED แสงนุ่ม · รูป pre-warped สำรอง</div>
-    <div class="chip">📄 <b>Handout:</b> flow scan + โค้ด ArUco เต็ม (copy ได้) + ตาราง gotcha (API เก่า/ใหม่, flip, dtype)</div></div>
+  <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo POP .toe (personal + crowd) · เช็ค TD มี POP · webcam · Optical Flow ตั้งไว้ · ไฟล์ aruco/ (library สำรอง)</div>
+    <div class="chip">📄 <b>Handout:</b> สาย POP + Math Combine + ตาราง personal/crowd + craft checklist</div></div>
 </section>
 
 <!-- S2.3 -->
 <section class="card ses">
   <div class="seshead"><span class="num">2.3</span><h3>Data Capture (Save → File → Auto-load)</h3>
     <span class="time">14:45–15:30 · 45m</span><span class="brk">Concept 10 / Demo 20 / Hands-on 10 / Share 5</span></div>
-  <div class="goal">🎯 save รูป scan ลงไฟล์ + TD โหลดไฟล์ใหม่กลับเองอัตโนมัติ</div>
+  <div class="goal">🎯 save ภาพ "moment" ที่คนเล่น (snapshot) + auto-process → ต่อยอดส่ง web/LINE ได้</div>
 
   <div class="ros"><div class="rh">⏲ Run of show</div><ol>
     <li><span class="t">0–10</span><span>concept file pipeline</span></li><li><span class="t">10–30</span><span>demo (save + Folder DAT + auto-load)</span></li>
     <li><span class="t">30–40</span><span>hands-on</span></li><li><span class="t">40–45</span><span>share</span></li>
   </ol></div>
-  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>ปิด loop kiosk: วาด→scan→เก็บ→โหลดกลับ. file I/O + folder watch = pattern ที่ใช้กับงาน data-driven ได้ (dev relevant)</p></div>
+  <div class="part"><div class="h"><b>1.</b> ความสำคัญ</div><p>เก็บ "moment" ของคนเล่น: snapshot ภาพสวยๆ → เก็บไฟล์ → ส่งต่อ (เว็บ/LINE) = engagement capture. file I/O + folder watch = pattern ที่ DDEXP เอาไปต่อ CRM ได้ <span class="ctxtag">📍 DDEXP: capture → LINE</span></p></div>
   <div class="part"><div class="h"><b>2.</b> ประเด็นที่ต้องพูด</div><ul><li>save ภาพ: <code>Movie File Out TOP</code> (snapshot) หรือ <code>cv2.imwrite</code> · ตั้งชื่อด้วย timestamp</li><li>folder watch <code>Folder DAT</code> + auto-load <code>DAT Execute</code> → "event-driven file pipeline เหมือน file watcher ที่พวกคุณเขียน"</li></ul></div>
   <div class="part"><div class="h"><b>3.</b> เนื้อหา + key scripts</div>
-    <pre>op('warped').save(f'scans/draw_{int(absTime.seconds)}.png')
+    <pre>op('output').save(f'moments/play_{int(absTime.seconds)}.png')   <span class="c"># snapshot moment</span>
 
-<span class="c"># Folder DAT → DAT Execute (onTableChange)</span>
+<span class="c"># Folder DAT → DAT Execute (onTableChange) — auto โชว์/ส่งต่อภาพล่าสุด</span>
 def onTableChange(dat):
     latest = dat[dat.numRows-1, 'name'].val
-    op('moviefilein1').par.file = f'scans/{latest}'
+    op('moviefilein1').par.file = f'moments/{latest}'
     return</pre></div>
-  <div class="part"><div class="h"><b>4.</b> Output</div><p>กดบันทึก → ไฟล์ PNG เกิด → TD เด้งโหลดภาพล่าสุดเอง · เซฟ .toe</p></div>
+  <div class="part"><div class="h"><b>4.</b> Output</div><p>กดบันทึก → PNG ของ moment เกิด → auto-load โชว์ / พร้อมส่งต่อ (เว็บ/LINE) · เซฟ .toe</p></div>
   <div class="foot"><div class="chip">🛠 <b>เตรียม:</b> demo .toe save+watch · โฟลเดอร์ scans/</div>
     <div class="chip">📄 <b>Handout:</b> chain save/watch + โค้ด (copy ได้)</div></div>
 </section>

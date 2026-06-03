@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TouchDesigner Workshop — Day 2 Slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{--ink:#16202a;--muted:#5b6b7a;--line:#e2e8f0;--soft:#f1f5f9;--accent:#0ea5a4;--accent2:#7c3aed;--warn:#f59e0b;--bg:#f7fafc;}
+  *{box-sizing:border-box;margin:0;}
+  html,body{height:100%;font-family:"IBM Plex Sans Thai",sans-serif;}
+  body{background:#0b1220;overflow:hidden;color:var(--ink);}
+  #fit{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;}
+  #stage{width:1280px;height:720px;position:relative;transform-origin:center center;background:var(--bg);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;padding:60px 86px 84px;}
+  .slide.on{display:flex;}
+  code,.mono{font-family:"IBM Plex Mono",monospace;background:#eef2f6;padding:1px 7px;border-radius:5px;font-size:.9em;}
+  .kicker{display:inline-block;align-self:flex-start;font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 16px;border-radius:999px;}
+  .kicker.k2{background:var(--accent2);}
+  h1{font-size:60px;line-height:1.1;margin:24px 0 12px;font-weight:700;}
+  h2{font-size:44px;line-height:1.15;margin:22px 0 20px;font-weight:700;}
+  .lead{font-size:27px;color:var(--muted);line-height:1.5;max-width:82%;}
+  ul{list-style:none;margin-top:14px;}
+  li{font-size:25px;line-height:1.5;margin:14px 0;padding-left:30px;position:relative;}
+  li::before{content:"▸";color:var(--accent);position:absolute;left:0;}
+  li b{color:var(--accent2);}
+  .big{font-size:30px;line-height:1.5;}
+  .note{font-size:21px;color:var(--muted);margin-top:auto;}
+  .chain{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:28px 0;}
+  .node{background:#fff;border:3px solid var(--accent);border-radius:12px;padding:13px 19px;font-size:21px;font-weight:600;box-shadow:0 3px 10px rgba(0,0,0,.06);}
+  .node.alt{border-color:var(--accent2);}
+  .arrow{font-size:27px;color:var(--muted);}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:18px;}
+  .card2{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 26px;}
+  .card2 h3{font-size:26px;color:var(--accent2);margin-bottom:12px;font-weight:600;}
+  .card2 p,.card2 li{font-size:21px;} .card2 li{margin:8px 0;}
+  table{border-collapse:collapse;width:100%;margin-top:18px;font-size:21px;}
+  th,td{border:1px solid var(--line);padding:10px 14px;text-align:left;} th{background:var(--soft);}
+  .title{background:linear-gradient(135deg,#0ea5a4,#7c3aed);color:#fff;justify-content:center;}
+  .title .kicker{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.5);}
+  .title h1{font-size:70px;} .title .lead{color:#eafffb;max-width:92%;}
+  .demo{background:#0b1220;color:#eef2f6;justify-content:center;}
+  .demo .kicker{background:var(--warn);} .demo h1{color:#fff;} .demo .lead{color:#cbd5e1;}
+  .hint{font-size:18px;color:#64748b;margin-top:18px;}
+  .demo .node{background:#162033;border-color:#fff;color:#fff;} .demo .node.alt{background:#1e1b3a;border-color:#a78bfa;} .demo .arrow{color:#94a3b8;} .demo li{color:#e2e8f0;} .demo li b{color:#a78bfa;}
+  #bar{position:absolute;top:0;left:0;height:5px;background:var(--accent);z-index:5;transition:width .2s;}
+  #foot{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:14px 28px;font-size:15px;color:var(--muted);}
+  .demo #foot{color:#64748b;}
+  #ctrl{position:fixed;top:14px;right:16px;z-index:50;display:flex;gap:8px;}
+  #ctrl button{font-family:inherit;font-size:13px;font-weight:600;border:none;cursor:pointer;background:rgba(255,255,255,.14);color:#fff;padding:8px 13px;border-radius:8px;}
+  #ctrl button:hover{background:rgba(255,255,255,.28);}
+  #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:60;background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:14px;display:none;}
+</style>
+</head>
+<body>
+<div id="ctrl">
+  <button onclick="savePNG()">💾 หน้านี้ PNG</button>
+  <button onclick="saveAll()">💾 ทั้งหมด</button>
+  <button onclick="toggleFS()">⛶ เต็มจอ</button>
+</div>
+<div id="toast"></div>
+<div id="fit"><div id="stage">
+  <div id="bar"></div>
+
+  <!-- 1 TITLE -->
+  <section class="slide title on">
+    <span class="kicker">Day 2 · Movement → Interactive</span>
+    <h1>เล่นกับการขยับของคน</h1>
+    <p class="lead">วันนี้: input = การขยับของคนจริง → เปิดป้ายรูป (มือ) + ฝูง POP particle ที่ react ได้ (personal + crowd)</p>
+    <div class="note" style="color:#eafffb;">→ ไปต่อ · ← ย้อน · F เต็มจอ · S เซฟหน้านี้</div>
+  </section>
+
+  <!-- 2 TODAY -->
+  <section class="slide">
+    <span class="kicker">วันนี้</span>
+    <h2>จากเมาส์/เสียง → การขยับของคน</h2>
+    <ul>
+      <li><b>MediaPipe</b> — กล้องอ่านมือ/ตัว → "เปิดป้ายรูป" (คนเดียวมีบทบาท)</li>
+      <li><b>POP particles</b> — ฝูงอนุภาคบน GPU ที่ react กับการขยับ</li>
+      <li>2 โหมด: <b>personal</b> (ท่าทาง) + <b>crowd</b> (ทั้งกลุ่มขยับร่วมกัน)</li>
+      <li>ปิดท้าย: ต่อ <b>มือถือ</b> คุมงาน + เก็บ <b>moment</b> ส่งต่อได้</li>
+    </ul>
+    <div class="note">ปลายทาง: ผนัง particle ที่คนขยับแล้วมันตอบ — สวยพอเอาไปขายเป็น experience</div>
+  </section>
+
+  <!-- 3 MEDIAPIPE -->
+  <section class="slide">
+    <span class="kicker">MediaPipe</span>
+    <h2>กล้องอ่านร่างกาย → ตัวเลข</h2>
+    <p class="big"><b>MediaPipe</b> = โมเดล AI ของ Google หาจุด landmark ของมือ/ตัว/หน้า จากภาพกล้อง</p>
+    <div class="chain">
+      <div class="node">กล้อง</div><span class="arrow">→</span>
+      <div class="node">MediaPipe</div><span class="arrow">→</span>
+      <div class="node alt">CHOP (ตำแหน่งมือ/ข้อต่อ)</div>
+    </div>
+    <div class="note">ได้เป็น CHOP = input stream อีกตัว เหมือนเมาส์/เสียง · ค่า 0..1 ต้อง map + Lag ลด jitter</div>
+  </section>
+
+  <!-- 4 REVEAL (personal) -->
+  <section class="slide">
+    <span class="kicker k2">personal</span>
+    <h2>"เปิดป้ายรูป" — ท่าทางเผยรูป</h2>
+    <div class="chain">
+      <div class="node">ตำแหน่ง/กางมือ</div><span class="arrow">→</span>
+      <div class="node">mask (วงกลม/ramp)</div><span class="arrow">→</span>
+      <div class="node alt">เผยรูปใต้ผ้าคลุม</div>
+    </div>
+    <ul>
+      <li>มือ/ท่าทาง → คุมขนาด mask → <b>เปิดกว้าง = เผยมาก</b></li>
+      <li>"มือโผล่ในเฟรมไหม" → Logic CHOP → Switch idle/active (logic จากวันแรก)</li>
+    </ul>
+    <div class="note">คนเดียวมีบทบาท — ฐานของ Portal (กางแขนเปิดประตูเผยโลโก้)</div>
+  </section>
+
+  <!-- 5 WHAT IS POP -->
+  <section class="slide">
+    <span class="kicker">POP</span>
+    <h2>POP คืออะไร</h2>
+    <p class="big">ตระกูล operator <b>ใหม่</b> ที่ทำ geometry / particle บน <b>GPU</b> โดยตรง — เร็ว ฝูงใหญ่ได้</p>
+    <p class="big" style="margin-top:18px;">ทำงานกับ <b>"จุด" + "attribute"</b> — attribute = ตัวเลขที่ติดกับแต่ละจุด (ตำแหน่ง, สี, อายุ). ภาพกลายเป็นจุดเป็นล้าน แล้วเราเล่นกับตัวเลขของแต่ละจุด</p>
+    <div class="note">เช็คเครื่องมี POP (รุ่นใหม่มีแล้ว) · ถ้าไม่มี → particlesGPU ทำได้เหมือนกัน</div>
+  </section>
+
+  <!-- 6 POP CHAIN -->
+  <section class="slide demo">
+    <span class="kicker">สาย POP</span>
+    <h1>image → particle</h1>
+    <div class="chain" style="margin-top:30px;">
+      <div class="node">image/Noise</div><span class="arrow">→</span>
+      <div class="node">TOP to POP</div><span class="arrow">→</span>
+      <div class="node">Particle POP</div><span class="arrow">→</span>
+      <div class="node">Noise POP</div><span class="arrow">→</span>
+      <div class="node alt">Math Combine → render</div>
+    </div>
+    <p class="hint">Particle POP เก็บ state (อายุ/อัตราเกิด/จำนวน) มี feedback ในตัว · ประกาศ color/factor เป็น in-attribute ไม่งั้นหาย · render = Geo + Camera + Light</p>
+  </section>
+
+  <!-- 7 MATH COMBINE -->
+  <section class="slide">
+    <span class="kicker">หัวใจ</span>
+    <h2>Math Combine POP</h2>
+    <p class="big">ที่ที่เอา attribute มา<b>คำนวณ/รวม</b>สร้างอันใหม่. งานนี้:</p>
+    <p class="big" style="color:var(--accent2);margin-top:14px;"><b>factor (การขยับของคน) × noise → + position</b></p>
+    <ul>
+      <li>จุดที่ "ถูกกวน" ขยับเยอะ · จุดนิ่งอยู่เฉย</li>
+      <li>กับดัก: <code>color</code> เป็น float4 ต้องใช้ <code>color.rgb</code> (float3) ให้ตรง noise · noise size = vector</li>
+    </ul>
+  </section>
+
+  <!-- 8 TWO MODES -->
+  <section class="slide">
+    <span class="kicker k2">2 โหมด</span>
+    <h2>personal ↔ crowd</h2>
+    <table>
+      <tr><th></th><th>Personal</th><th>Crowd</th></tr>
+      <tr><td>จับอะไร</td><td>ตัวบุคคล (pose/มือ)</td><td>การขยับรวมทั้งภาพ</td></tr>
+      <tr><td>เทคนิค</td><td>MediaPipe → ข้อต่อ</td><td>Optical Flow → motion field</td></tr>
+      <tr><td>เป็น factor</td><td>มือ = จุดกวน particle</td><td>R/G ของ flow = แรงผลักฝูง</td></tr>
+      <tr><td>ความรู้สึก</td><td>"ฉันมีพลัง"</td><td>"เราขยับด้วยกัน"</td></tr>
+    </table>
+    <div class="note"><b>โครงเดียวกัน เปลี่ยนแค่ factor</b> — personal=มือ · crowd=optical flow</div>
+  </section>
+
+  <!-- 9 OPTICAL FLOW (crowd) -->
+  <section class="slide demo">
+    <span class="kicker">crowd</span>
+    <h1>Optical Flow</h1>
+    <p class="lead">กล้องเห็นทั้งฝูง → การขยับกลายเป็น "สนามแรง" ผลัก particle ทั้งฝูง</p>
+    <div class="chain" style="margin-top:28px;">
+      <div class="node">กล้อง (ทั้งเฟรม)</div><span class="arrow">→</span>
+      <div class="node">Optical Flow TOP</div><span class="arrow">→</span>
+      <div class="node alt">R/G = แรง x/y → ฝูง particle</div>
+    </div>
+    <p class="hint">ไม่ track ใครเลย — 10–100 คนช่วยกันดัน · ตอนนิ่ง = turbulence noise ให้ยังมีชีวิต · ไม่ต้องสอนวิธีเล่น เดินมาก็ขยับ</p>
+  </section>
+
+  <!-- 10 AESTHETIC -->
+  <section class="slide">
+    <span class="kicker">ทำให้สวยขายได้</span>
+    <h2>มอง particle เป็น "แสง" ไม่ใช่ฟิสิกส์</h2>
+    <p class="big">Kill the default look — 5 ท่า:</p>
+    <ul>
+      <li>① <b>trails</b> (feedback) · ② <b>bloom</b> + additive</li>
+      <li>③ สีจากความเร็ว → ramp <b>2 สี</b> (ช้า=เย็น เร็ว=ร้อน) · ④ พื้นหลังดำ</li>
+      <li>⑤ <b>restraint</b> — อย่าเต็มจอ ปล่อยที่ว่าง</li>
+    </ul>
+    <div class="note">น้อย-ใหญ่-ช้า-แสงดี ชนะ ไล่จำนวน · อ้าง: teamLab, Refik Anadol</div>
+  </section>
+
+  <!-- 11 WEB -->
+  <section class="slide demo">
+    <span class="kicker">Web</span>
+    <h1>มือถือคนดู = คุมงาน</h1>
+    <p class="lead">TD เป็น server เอง (Web Server DAT) — คนดูเปิด URL ในมือถือ แตะแล้วคุม installation สด</p>
+    <div class="chain" style="margin-top:28px;">
+      <div class="node">มือถือ (WiFi เดียวกัน)</div><span class="arrow">→</span>
+      <div class="node">ws:// JSON</div><span class="arrow">→</span>
+      <div class="node alt">TD ขับ particle</div>
+    </div>
+    <p class="hint">vibe-code 1 ตัว = control page (เขียนเสร็จแล้วใน web-controller/) · ดึงจุดแข็ง web/LINE ของทีม · มือถือ=เสริม กล้อง=หลัก</p>
+  </section>
+
+  <!-- 12 SAVE MOMENT -->
+  <section class="slide">
+    <span class="kicker">capture</span>
+    <h2>เก็บ "moment" → ส่งต่อ</h2>
+    <div class="chain">
+      <div class="node">คนเล่น</div><span class="arrow">→</span>
+      <div class="node">snapshot (PNG)</div><span class="arrow">→</span>
+      <div class="node alt">เว็บ / LINE</div>
+    </div>
+    <ul>
+      <li>save ภาพสวยตอนคนเล่น (timestamp) → folder watch auto-load/ส่งต่อ</li>
+      <li><b>= engagement capture</b> — ต่อ CRM/LINE ได้ (จุดแข็งของทีม)</li>
+    </ul>
+  </section>
+
+  <!-- 13 SHOW & TELL -->
+  <section class="slide">
+    <span class="kicker">ปิด Day 2</span>
+    <h2>Show &amp; Tell</h2>
+    <p class="big">โชว์ระบบ input ของแต่ละคน — มือ(reveal) หรือ ฝูง particle (personal/crowd)</p>
+    <ul>
+      <li>ทุกชิ้น = การขยับ → particle/visual react</li>
+      <li>พรุ่งนี้ (Day 3): ประกอบเป็นงานเดียว + ทำให้สวย + ตั้งโชว์</li>
+    </ul>
+    <div class="note">เซฟ .toe ทุกคน</div>
+  </section>
+
+  <div id="foot"><span>TouchDesigner Workshop · Day 2</span><span id="counter">1 / 13</span></div>
+</div></div>
+<script>
+  const slides=Array.from(document.querySelectorAll('.slide')), stage=document.getElementById('stage'),
+        bar=document.getElementById('bar'), counter=document.getElementById('counter'), toast=document.getElementById('toast');
+  let i=0;
+  function fitStage(){ const s=Math.min(window.innerWidth/1280,window.innerHeight/720); stage.style.transform='scale('+s+')'; }
+  window.addEventListener('resize',fitStage); fitStage();
+  function show(n){ i=Math.max(0,Math.min(slides.length-1,n)); slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    bar.style.width=((i+1)/slides.length*100)+'%'; counter.textContent=(i+1)+' / '+slides.length; }
+  const next=()=>show(i+1), prev=()=>show(i-1);
+  function msg(t){ toast.textContent=t; toast.style.display='block'; clearTimeout(msg._t); msg._t=setTimeout(()=>toast.style.display='none',1800); }
+  function toggleFS(){ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }
+  async function capture(){ await document.fonts.ready; const t=stage.style.transform; stage.style.transform='scale(1)';
+    const c=await html2canvas(stage,{scale:2,backgroundColor:null,width:1280,height:720,windowWidth:1280,windowHeight:720});
+    stage.style.transform=t; fitStage(); return c; }
+  function dl(c,name){ const a=document.createElement('a'); a.href=c.toDataURL('image/png'); a.download=name; a.click(); }
+  async function savePNG(){ msg('กำลังเซฟ…'); const c=await capture(); dl(c,'day2-slide-'+String(i+1).padStart(2,'0')+'.png'); msg('เซฟหน้า '+(i+1)+' ✓'); }
+  async function saveAll(){ const start=i; for(let k=0;k<slides.length;k++){ show(k); await new Promise(r=>setTimeout(r,250));
+    msg('กำลังเซฟ '+(k+1)+'/'+slides.length+'…'); const c=await capture(); dl(c,'day2-slide-'+String(k+1).padStart(2,'0')+'.png'); await new Promise(r=>setTimeout(r,350)); }
+    show(start); msg('เซฟครบ '+slides.length+' หน้า ✓'); }
+  document.addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();next();}
+    else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev();}
+    else if(e.key==='Home')show(0); else if(e.key==='End')show(slides.length-1);
+    else if(e.key.toLowerCase()==='f')toggleFS(); else if(e.key.toLowerCase()==='s')savePNG();
+  });
+  document.getElementById('fit').addEventListener('click',e=>{ const x=e.clientX/window.innerWidth; if(x>0.35)next(); else prev(); });
+  show(0);
+</script>
+</body>
+</html>
